@@ -35,9 +35,14 @@ var app = builder.Build();
 // DB connection test
 try
 {
+    if (dbHost == null || dbName == null || dbUser == null || dbPassword == null)
+    {
+        throw new Exception("\nError: Database connection variables are not set in the .env file.");
+    }
+    Console.WriteLine($"Connection string: {connectionString}");
     using var conn = new NpgsqlConnection(connectionString);
     await conn.OpenAsync();
-    Console.WriteLine("Connection Successful: " + conn.Host);
+    Console.WriteLine("\nConnection Successful: " + conn.Host);
 
     await using var cmd = new NpgsqlCommand("SELECT current_user", conn);
     await using var reader = await cmd.ExecuteReaderAsync();
@@ -48,7 +53,7 @@ try
 }
 catch (Exception ex)
 {
-    Console.WriteLine($"Connection Error: {ex.Message}");
+    Console.WriteLine($"\nConnection Error: {ex.Message}");
 }
 
 if (app.Environment.IsDevelopment())
