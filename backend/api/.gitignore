@@ -54,3 +54,4 @@ _ReSharper.*
 *.sln.iml
 
 local.settings.json
+.env

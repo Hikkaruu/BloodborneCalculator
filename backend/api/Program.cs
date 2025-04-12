@@ -1,11 +1,24 @@
+﻿using api.Persistence.Data;
 using Microsoft.OpenApi.Models;
+using Microsoft.EntityFrameworkCore;
+using DotNetEnv;
+using Npgsql;
+using System.Data.Common;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Variables for database connection from .env file
+Env.Load(".env");
+var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
+var dbName = Environment.GetEnvironmentVariable("DB_NAME");
+var dbUser = Environment.GetEnvironmentVariable("DB_USER");
+var dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD");
+var connectionString = $"Host={dbHost};Database={dbName};Username={dbUser};Password={dbPassword}";
 
+// Add services to the container.
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(connectionString));
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -19,7 +32,25 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// DB connection test
+try
+{
+    using var conn = new NpgsqlConnection(connectionString);
+    await conn.OpenAsync();
+    Console.WriteLine("Connection Successful: " + conn.Host);
+
+    await using var cmd = new NpgsqlCommand("SELECT current_user", conn);
+    await using var reader = await cmd.ExecuteReaderAsync();
+    if (await reader.ReadAsync())
+    {
+        Console.WriteLine("Logged as: " + reader.GetString(0));
+    }
+}
+catch (Exception ex)
+{
+    Console.WriteLine($"Connection Error: {ex.Message}");
+}
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
