@@ -3,7 +3,6 @@ using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using DotNetEnv;
 using Npgsql;
-using System.Data.Common;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -32,14 +32,14 @@ namespace api.Models.Entities
         public int extra_damage_count { get; set; }
 
         [Required]
-        [Column("attack_type1", TypeName = "nvarchar(20)")]
+        [Column("attack_type1", TypeName = "varchar(20)")]
         public AttackType AttackType1 { get; set; }
 
-        [Column("attack_type2", TypeName = "nvarchar(20)")]
+        [Column("attack_type2", TypeName = "varchar(20)")]
         public AttackType AttackType2 { get; set; }
 
         [Required]
-        [Column("attack_mode", TypeName = "nvarchar(20)")]
+        [Column("attack_mode", TypeName = "varchar(20)")]
         public AttackMode AttackMode { get; set; }
 
         [Required]

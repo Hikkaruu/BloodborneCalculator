@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace api.Models.Entities
 {
+    [Table("bosses")]
     public class Bosses
     {
         [Key]

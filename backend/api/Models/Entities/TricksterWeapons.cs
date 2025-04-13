@@ -4,6 +4,7 @@ using api.Models.Enums;
 
 namespace api.Models.Entities
 {
+    [Table("trickster_weapons")]
     public class TricksterWeapons
     {
         [Key]
@@ -45,15 +46,15 @@ namespace api.Models.Entities
         public int RapidPoison { get; set; }
 
         [Required]
-        [Column("imprints_normal", TypeName = "nvarchar(20)")]
+        [Column("imprints_normal", TypeName = "varchar(20)")]
         public ImprintType ImprintsNormal { get; set; }
 
         [Required]
-        [Column("imprints_uncanny", TypeName = "nvarchar(20)")]
+        [Column("imprints_uncanny", TypeName = "varchar(20)")]
         public ImprintType ImprintsUncanny { get; set; }
 
         [Required]
-        [Column("imprints_lost", TypeName = "nvarchar(20)")]
+        [Column("imprints_lost", TypeName = "varchar(20)")]
         public ImprintType ImprintsLost { get; set; }
 
         [Required]

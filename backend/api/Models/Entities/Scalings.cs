@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api.Models.Entities
 {
+    [Table("scalings")]
     public class Scalings
     {
         [Key]

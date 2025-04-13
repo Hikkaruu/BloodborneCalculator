@@ -4,6 +4,7 @@ using api.Models.Enums;
 
 namespace api.Models.Entities
 {
+    [Table("firearms")]
     public class Firearms
     {
         [Key]
@@ -41,7 +42,7 @@ namespace api.Models.Entities
         public int BulletUse { get; set; }
 
         [Required]
-        [Column("imprints", TypeName = "nvarchar(20)")]
+        [Column("imprints", TypeName = "varchar(20)")]
         public ImprintType Imprints { get; set; }
 
         [Required]
