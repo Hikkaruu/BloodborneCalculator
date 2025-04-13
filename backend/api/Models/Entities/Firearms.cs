@@ -62,6 +62,10 @@ namespace api.Models.Entities
         public int ArcaneRequirement { get; set; }
 
         [Required]
+        [Column("image_url")]
+        public string ImageUrl { get; set; } = string.Empty;
+
+        [Required]
         [Column("scaling_id")]
         public int ScalingId { get; set; }
 
