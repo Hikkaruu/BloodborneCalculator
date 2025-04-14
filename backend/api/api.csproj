@@ -27,7 +27,6 @@
     <Folder Include="Controllers\" />
     <Folder Include="Models\DTOs\" />
     <Folder Include="Persistence\Migrations\" />
-    <Folder Include="Persistence\Seeders\" />
     <Folder Include="Services\" />
   </ItemGroup>
 
