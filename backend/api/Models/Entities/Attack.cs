@@ -6,7 +6,7 @@ using api.Models.Enums;
 namespace api.Models.Entities
 {
     [Table("attacks")]
-    public class Attacks
+    public class Attack
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -29,7 +29,7 @@ namespace api.Models.Entities
         public decimal ExtraDamage { get; set; }
 
         [Column("extra_damage_count")]
-        public int extra_damage_count { get; set; }
+        public int ExtraDamageCount { get; set; }
 
         [Required]
         [Column("attack_type1", TypeName = "varchar(20)")]
@@ -46,6 +46,6 @@ namespace api.Models.Entities
         [Column("trickster_weapon_id")]
         public int TricksterWeaponId { get; set; }
 
-        public TricksterWeapons TricksterWeapons { get; set; } = null!;
+        public TricksterWeapon TricksterWeapons { get; set; } = null!;
     }
 }

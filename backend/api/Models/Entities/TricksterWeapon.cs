@@ -4,8 +4,8 @@ using api.Models.Enums;
 
 namespace api.Models.Entities
 {
-    [Table("firearms")]
-    public class Firearms
+    [Table("trickster_weapons")]
+    public class TricksterWeapon
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -42,8 +42,24 @@ namespace api.Models.Entities
         public int BulletUse { get; set; }
 
         [Required]
-        [Column("imprints", TypeName = "varchar(20)")]
-        public ImprintType Imprints { get; set; }
+        [Column("rapid_poison")]
+        public int RapidPoison { get; set; }
+
+        [Required]
+        [Column("imprints_normal", TypeName = "varchar(20)")]
+        public ImprintType ImprintsNormal { get; set; }
+
+        [Required]
+        [Column("imprints_uncanny", TypeName = "varchar(20)")]
+        public ImprintType ImprintsUncanny { get; set; }
+
+        [Required]
+        [Column("imprints_lost", TypeName = "varchar(20)")]
+        public ImprintType ImprintsLost { get; set; }
+
+        [Required]
+        [Column("rally")]
+        public int Rally { get; set; }
 
         [Required]
         [Column("strength_requirement")]
@@ -62,6 +78,10 @@ namespace api.Models.Entities
         public int ArcaneRequirement { get; set; }
 
         [Required]
+        [Column("max_upgrade_attack")]
+        public int MaxUpgradeAttack { get; set; }
+
+        [Required]
         [Column("image_url")]
         public string ImageUrl { get; set; } = string.Empty;
 
@@ -69,6 +89,9 @@ namespace api.Models.Entities
         [Column("scaling_id")]
         public int ScalingId { get; set; }
 
-        public Scalings Scalings { get; set; } = null!;
+        public Scaling Scalings { get; set; } = null!;
+
+        public List<Attack> Attacks { get; set; } = new List<Attack>();
+
     }
 }

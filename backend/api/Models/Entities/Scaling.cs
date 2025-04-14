@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace api.Models.Entities
 {
     [Table("scalings")]
-    public class Scalings
+    public class Scaling
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -57,7 +57,7 @@ namespace api.Models.Entities
         [Column("arcane_step")]
         public decimal ArcaneStep { get; set; }
 
-        public TricksterWeapons TricksterWeapons { get; set; } = null!;
-        public Firearms Firearms { get; set; } = null!;
+        public TricksterWeapon TricksterWeapons { get; set; } = null!;
+        public Firearm Firearms { get; set; } = null!;
     }
 }   

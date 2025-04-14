@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace api.Models.Entities
 {
     [Table("bosses")]
-    public class Bosses
+    public class Boss
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
