@@ -41,5 +41,8 @@ namespace api.Models.DTOs.Scaling
         [Required]
         [Range(0, 9.999)]
         public decimal ArcaneStep { get; set; }
+
+        public int? TricksterWeaponId { get; set; }
+        public int? FirearmId { get; set; }
     }
 }
