@@ -53,7 +53,7 @@ namespace api.Models.Entities
         public decimal BloodtingeStep { get; set; }
 
         [Required]
-        [Precision(3, 3)]
+        [Precision(4, 3)]
         [Column("arcane_step")]
         public decimal ArcaneStep { get; set; }
 

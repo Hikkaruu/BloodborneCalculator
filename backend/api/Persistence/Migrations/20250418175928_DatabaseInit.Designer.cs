@@ -11,7 +11,7 @@ using api.Persistence.Data;
 namespace api.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250414191640_DatabaseInit")]
+    [Migration("20250418175928_DatabaseInit")]
     partial class DatabaseInit
     {
         /// <inheritdoc />
@@ -24,7 +24,7 @@ namespace api.Persistence.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("api.Models.Entities.Attacks", b =>
+            modelBuilder.Entity("api.Models.Entities.Attack", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -58,6 +58,10 @@ namespace api.Persistence.Migrations
                         .HasColumnType("numeric(3,2)")
                         .HasColumnName("extra_damage");
 
+                    b.Property<int>("ExtraDamageCount")
+                        .HasColumnType("integer")
+                        .HasColumnName("extra_damage_count");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -68,10 +72,6 @@ namespace api.Persistence.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("trickster_weapon_id");
 
-                    b.Property<int>("extra_damage_count")
-                        .HasColumnType("integer")
-                        .HasColumnName("extra_damage_count");
-
                     b.HasKey("Id");
 
                     b.HasIndex("TricksterWeaponId");
@@ -79,7 +79,7 @@ namespace api.Persistence.Migrations
                     b.ToTable("attacks");
                 });
 
-            modelBuilder.Entity("api.Models.Entities.Bosses", b =>
+            modelBuilder.Entity("api.Models.Entities.Boss", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -115,7 +115,7 @@ namespace api.Persistence.Migrations
                     b.ToTable("bosses");
                 });
 
-            modelBuilder.Entity("api.Models.Entities.Firearms", b =>
+            modelBuilder.Entity("api.Models.Entities.Firearm", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -192,7 +192,7 @@ namespace api.Persistence.Migrations
                     b.ToTable("firearms");
                 });
 
-            modelBuilder.Entity("api.Models.Entities.Scalings", b =>
+            modelBuilder.Entity("api.Models.Entities.Scaling", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -207,8 +207,8 @@ namespace api.Persistence.Migrations
                         .HasColumnName("arcane_scaling");
 
                     b.Property<decimal>("ArcaneStep")
-                        .HasPrecision(3, 3)
-                        .HasColumnType("numeric(3,3)")
+                        .HasPrecision(4, 3)
+                        .HasColumnType("numeric(4,3)")
                         .HasColumnName("arcane_step");
 
                     b.Property<decimal>("BloodtingeScaling")
@@ -252,7 +252,7 @@ namespace api.Persistence.Migrations
                     b.ToTable("scalings");
                 });
 
-            modelBuilder.Entity("api.Models.Entities.TricksterWeapons", b =>
+            modelBuilder.Entity("api.Models.Entities.TricksterWeapon", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -351,9 +351,9 @@ namespace api.Persistence.Migrations
                     b.ToTable("trickster_weapons");
                 });
 
-            modelBuilder.Entity("api.Models.Entities.Attacks", b =>
+            modelBuilder.Entity("api.Models.Entities.Attack", b =>
                 {
-                    b.HasOne("api.Models.Entities.TricksterWeapons", "TricksterWeapons")
+                    b.HasOne("api.Models.Entities.TricksterWeapon", "TricksterWeapons")
                         .WithMany("Attacks")
                         .HasForeignKey("TricksterWeaponId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -362,29 +362,29 @@ namespace api.Persistence.Migrations
                     b.Navigation("TricksterWeapons");
                 });
 
-            modelBuilder.Entity("api.Models.Entities.Firearms", b =>
+            modelBuilder.Entity("api.Models.Entities.Firearm", b =>
                 {
-                    b.HasOne("api.Models.Entities.Scalings", "Scalings")
+                    b.HasOne("api.Models.Entities.Scaling", "Scalings")
                         .WithOne("Firearms")
-                        .HasForeignKey("api.Models.Entities.Firearms", "ScalingId")
+                        .HasForeignKey("api.Models.Entities.Firearm", "ScalingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Scalings");
                 });
 
-            modelBuilder.Entity("api.Models.Entities.TricksterWeapons", b =>
+            modelBuilder.Entity("api.Models.Entities.TricksterWeapon", b =>
                 {
-                    b.HasOne("api.Models.Entities.Scalings", "Scalings")
+                    b.HasOne("api.Models.Entities.Scaling", "Scalings")
                         .WithOne("TricksterWeapons")
-                        .HasForeignKey("api.Models.Entities.TricksterWeapons", "ScalingId")
+                        .HasForeignKey("api.Models.Entities.TricksterWeapon", "ScalingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Scalings");
                 });
 
-            modelBuilder.Entity("api.Models.Entities.Scalings", b =>
+            modelBuilder.Entity("api.Models.Entities.Scaling", b =>
                 {
                     b.Navigation("Firearms")
                         .IsRequired();
@@ -393,7 +393,7 @@ namespace api.Persistence.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("api.Models.Entities.TricksterWeapons", b =>
+            modelBuilder.Entity("api.Models.Entities.TricksterWeapon", b =>
                 {
                     b.Navigation("Attacks");
                 });

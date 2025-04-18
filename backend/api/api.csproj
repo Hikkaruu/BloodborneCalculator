@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="CoreEx.AutoMapper" Version="3.31.0" />
     <PackageReference Include="DotNetEnv" Version="3.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.4">
@@ -25,7 +26,7 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="Models\DTOs\" />
+    <Folder Include="Interfaces\" />
     <Folder Include="Persistence\Migrations\" />
     <Folder Include="Services\" />
   </ItemGroup>

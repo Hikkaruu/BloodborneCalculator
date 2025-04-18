@@ -3,6 +3,7 @@ using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using DotNetEnv;
 using Npgsql;
+using api.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,20 +16,12 @@ var dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD");
 var connectionString = $"Host={dbHost};Database={dbName};Username={dbUser};Password={dbPassword}";
 
 // Add services to the container.
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(connectionString));
-builder.Services.AddScoped<DataSeeder>();
+
+builder.Services.AddInfrastructureLayer(connectionString);
+builder.Services.AddApplicationLayer();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo
-    {
-        Title = "Bloodborne API",
-        Version = "1.0.0",
-        Description = "Bloodborne API for calculator purposes"
-    });
-});
+builder.Services.AddSwaggerDocumentation();
 
 var app = builder.Build();
 

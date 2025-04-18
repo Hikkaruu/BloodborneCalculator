@@ -42,7 +42,7 @@ namespace api.Persistence.Migrations
                     strength_step = table.Column<decimal>(type: "numeric(3,2)", precision: 3, scale: 2, nullable: false),
                     skill_step = table.Column<decimal>(type: "numeric(3,2)", precision: 3, scale: 2, nullable: false),
                     bloodtinge_step = table.Column<decimal>(type: "numeric(3,2)", precision: 3, scale: 2, nullable: false),
-                    arcane_step = table.Column<decimal>(type: "numeric(3,3)", precision: 3, scale: 3, nullable: false)
+                    arcane_step = table.Column<decimal>(type: "numeric(4,3)", precision: 4, scale: 3, nullable: false)
                 },
                 constraints: table =>
                 {

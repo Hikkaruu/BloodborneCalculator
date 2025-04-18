@@ -8,7 +8,7 @@ namespace api.Models.Entities
     [Table("attacks")]
     public class Attack
     {
-        [Key]
+        [Key] 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("id")]
         public int Id { get; set; }
