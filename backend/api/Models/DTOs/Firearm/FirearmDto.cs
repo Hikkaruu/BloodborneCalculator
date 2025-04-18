@@ -32,7 +32,7 @@ namespace api.Models.DTOs.Firearm
         public int BoltAttack { get; set; }
 
         [Required]
-        [Range(1, 20)]
+        [Range(0, 20)]
         public int BulletUse { get; set; }
 
         [Required]
