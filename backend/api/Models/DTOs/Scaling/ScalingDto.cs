@@ -43,6 +43,8 @@ namespace api.Models.DTOs.Scaling
         public decimal ArcaneStep { get; set; }
 
         public int? TricksterWeaponId { get; set; }
+        public string? TricksterWeaponName { get; set; }
         public int? FirearmId { get; set; }
+        public string? FirearmName { get; set; }
     }
 }
