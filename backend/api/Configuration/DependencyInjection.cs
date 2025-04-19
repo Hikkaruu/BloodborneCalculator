@@ -1,5 +1,7 @@
-﻿using api.Mapping;
+﻿using api.Interfaces;
+using api.Mapping;
 using api.Persistence.Data;
+using api.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -9,6 +11,10 @@ namespace api.Configuration
     {
         public static IServiceCollection AddApplicationLayer(this IServiceCollection services)
         {
+            services.AddScoped<IBossService, BossService>();
+            services.AddScoped<IScalingService, ScalingService>();
+            services.AddScoped<IAttackService, AttackService>();
+
             services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
             return services;
