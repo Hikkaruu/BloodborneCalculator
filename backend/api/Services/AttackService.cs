@@ -1,8 +1,6 @@
 ﻿using api.Interfaces;
 using api.Models.DTOs.Attack;
-using api.Models.DTOs.Scaling;
 using api.Models.Entities;
-using api.Models.Enums;
 using api.Models.Filters;
 using api.Persistence.Data;
 using AutoMapper;
