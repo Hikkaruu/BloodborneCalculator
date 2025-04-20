@@ -3,6 +3,7 @@ using api.Models.DTOs.Scaling;
 using api.Models.Entities;
 using api.Persistence.Data;
 using AutoMapper;
+using CoreEx;
 using Microsoft.EntityFrameworkCore;
 
 namespace api.Services
@@ -26,7 +27,8 @@ namespace api.Services
                 .AsNoTracking()
                 .FirstOrDefaultAsync(s => s.Id == id);
 
-            if (scaling == null) return null!;
+            if (scaling == null)
+                throw new NotFoundException($"Scaling with ID: {id} not found");
 
             return _mapper.Map<ScalingDto>(scaling);
         }
