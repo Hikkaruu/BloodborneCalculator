@@ -4,9 +4,9 @@ using api.Models.DTOs.Scaling;
 using api.Persistence.Data;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using api.Interfaces;
 using api.Mapping;
 using CoreEx;
+using api.Tests.Helpers.TestHelpers;
 
 namespace api.Tests.Services.ScalingTests
 {
@@ -14,6 +14,7 @@ namespace api.Tests.Services.ScalingTests
     {
         private readonly DbContextOptions<AppDbContext> _dbOptions;
         private readonly IMapper _mapper;
+        private readonly TestHelpers _testHelpers = new TestHelpers();
 
         public ScalingServiceTests()
         {
@@ -59,6 +60,7 @@ namespace api.Tests.Services.ScalingTests
             using var context = new AppDbContext(_dbOptions);
             var scaling1 = new Scaling { Id = 1, Name = "Scaling 1" };
             var scaling2 = new Scaling { Id = 2, Name = "Scaling 2" };
+
             context.Scalings.Add(scaling1);
             context.Scalings.Add(scaling2);
             await context.SaveChangesAsync();
@@ -76,11 +78,26 @@ namespace api.Tests.Services.ScalingTests
         {
             using var context = new AppDbContext(_dbOptions);
 
-            var createDto = new CreateScalingDto { Name = "New Scaling" };
+            var createDto = new CreateScalingDto {
+                   Name = "New Scaling",
+                   StrengthScaling = 1.0m,
+                   SkillScaling = 1.0m,
+                   BloodtingeScaling = 1.0m,
+                   ArcaneScaling = 1.0m,
+                   StrengthStep = 1.0m,
+                   SkillStep = 1.0m,
+                   ArcaneStep = 1.0m,
+                   BloodtingeStep = 1.0m,
+                   TricksterWeaponId = null,
+                   FirearmId = null
+            };
+
+            _testHelpers.ValidateDto(createDto);
 
             var service = new ScalingService(context, _mapper);
 
             var result = await service.CreateScalingAsync(createDto);
+
 
             Assert.NotNull(result);
             Assert.Equal("New Scaling", result.Name);
