@@ -11,7 +11,7 @@ using api.Persistence.Data;
 namespace api.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250418175928_DatabaseInit")]
+    [Migration("20250420163959_DatabaseInit")]
     partial class DatabaseInit
     {
         /// <inheritdoc />
@@ -88,27 +88,84 @@ namespace api.Persistence.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("ArcaneDefense")
+                        .HasColumnType("integer")
+                        .HasColumnName("arcane_defense");
+
                     b.Property<int>("BloodEchoes")
                         .HasColumnType("integer")
                         .HasColumnName("blood_echoes");
+
+                    b.Property<int>("BloodtingeDefense")
+                        .HasColumnType("integer")
+                        .HasColumnName("bloodtinge_defense");
+
+                    b.Property<int>("BluntDefense")
+                        .HasColumnType("integer")
+                        .HasColumnName("blunt_defense");
+
+                    b.Property<int>("BoltDefense")
+                        .HasColumnType("integer")
+                        .HasColumnName("bolt_defense");
+
+                    b.Property<int>("FireDefense")
+                        .HasColumnType("integer")
+                        .HasColumnName("fire_defense");
 
                     b.Property<int>("Health")
                         .HasColumnType("integer")
                         .HasColumnName("health");
 
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("image_url");
+
+                    b.Property<bool>("IsBeast")
+                        .HasColumnType("boolean")
+                        .HasColumnName("is_beast");
+
                     b.Property<bool>("IsInterruptible")
                         .HasColumnType("boolean")
                         .HasColumnName("is_interruptible");
 
+                    b.Property<bool>("IsKin")
+                        .HasColumnType("boolean")
+                        .HasColumnName("is_kin");
+
                     b.Property<bool>("IsRequired")
                         .HasColumnType("boolean")
                         .HasColumnName("is_required");
+
+                    b.Property<bool>("IsWeakToRighteous")
+                        .HasColumnType("boolean")
+                        .HasColumnName("is_weak_to_righteous");
+
+                    b.Property<bool>("IsWeakToSerrated")
+                        .HasColumnType("boolean")
+                        .HasColumnName("is_weak_to_serrated");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("character varying(50)")
                         .HasColumnName("name");
+
+                    b.Property<int>("PhysicalDefense")
+                        .HasColumnType("integer")
+                        .HasColumnName("physical_defense");
+
+                    b.Property<int>("RapidPoisonResistance")
+                        .HasColumnType("integer")
+                        .HasColumnName("rapid_poison_resistance");
+
+                    b.Property<int>("SlowPoisonResistance")
+                        .HasColumnType("integer")
+                        .HasColumnName("slow_poison_resistance");
+
+                    b.Property<int>("ThrustDefense")
+                        .HasColumnType("integer")
+                        .HasColumnName("thrust_defense");
 
                     b.HasKey("Id");
 

@@ -21,7 +21,21 @@ namespace api.Persistence.Migrations
                     health = table.Column<int>(type: "integer", nullable: false),
                     blood_echoes = table.Column<int>(type: "integer", nullable: false),
                     is_interruptible = table.Column<bool>(type: "boolean", nullable: false),
-                    is_required = table.Column<bool>(type: "boolean", nullable: false)
+                    is_required = table.Column<bool>(type: "boolean", nullable: false),
+                    is_beast = table.Column<bool>(type: "boolean", nullable: false),
+                    is_kin = table.Column<bool>(type: "boolean", nullable: false),
+                    is_weak_to_serrated = table.Column<bool>(type: "boolean", nullable: false),
+                    is_weak_to_righteous = table.Column<bool>(type: "boolean", nullable: false),
+                    physical_defense = table.Column<int>(type: "integer", nullable: false),
+                    blunt_defense = table.Column<int>(type: "integer", nullable: false),
+                    thrust_defense = table.Column<int>(type: "integer", nullable: false),
+                    bloodtinge_defense = table.Column<int>(type: "integer", nullable: false),
+                    arcane_defense = table.Column<int>(type: "integer", nullable: false),
+                    fire_defense = table.Column<int>(type: "integer", nullable: false),
+                    bolt_defense = table.Column<int>(type: "integer", nullable: false),
+                    slow_poison_resistance = table.Column<int>(type: "integer", nullable: false),
+                    rapid_poison_resistance = table.Column<int>(type: "integer", nullable: false),
+                    image_url = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
