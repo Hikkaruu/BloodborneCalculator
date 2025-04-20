@@ -4,6 +4,9 @@ namespace api.Models.DTOs.Scaling
 {
     public class UpdateScalingDto
     {
+        [Required]
+        public int Id { get; set; }
+
         [MaxLength(50, ErrorMessage = "Name can't be longer than 50 characters")]
         public string? Name { get; set; }
 
