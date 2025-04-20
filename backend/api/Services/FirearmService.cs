@@ -1,5 +1,4 @@
 ﻿using api.Interfaces;
-using api.Models.DTOs.Attack;
 using api.Models.DTOs.Firearm;
 using api.Models.Entities;
 using api.Models.Filters;
