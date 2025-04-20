@@ -37,7 +37,7 @@ namespace api.Models.DTOs.Scaling
         public decimal BloodtingeStep { get; set; }
 
         [Required]
-        [Range(0, 0.999, ErrorMessage = "Arcane step must be between 0 and 9.999")]
+        [Range(0, 9.999, ErrorMessage = "Arcane step must be between 0 and 9.999")]
         public decimal ArcaneStep { get; set; }
 
         public int? TricksterWeaponId { get; set; }
