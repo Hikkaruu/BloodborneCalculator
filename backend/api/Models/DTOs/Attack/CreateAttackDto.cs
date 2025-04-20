@@ -22,11 +22,17 @@ namespace api.Models.DTOs.Attack
         public int ExtraDamageCount { get; set; } = 0;
 
         [Required]
+        [EnumDataType(typeof(AttackType), ErrorMessage = "Invalid Attack Type. Valid values are: \n" +
+            "None, Physical, Blunt, Thrust, Blood, Arcane, Fire, Bolt")]
         public AttackType AttackType1 { get; set; }
 
+        [EnumDataType(typeof(AttackType), ErrorMessage = "Invalid Attack Type. Valid values are: \n" +
+            "None, Physical, Blunt, Thrust, Blood, Arcane, Fire, Bolt")]
         public AttackType? AttackType2 { get; set; }
 
         [Required]
+        [EnumDataType(typeof(AttackMode), ErrorMessage = "Invalid Attack Mode. Valid values are: \n" +
+            "Normal, Transformed")]
         public AttackMode AttackMode { get; set; }
 
         [Required]
