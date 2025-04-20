@@ -14,6 +14,7 @@ namespace api.Configuration
             services.AddScoped<IBossService, BossService>();
             services.AddScoped<IScalingService, ScalingService>();
             services.AddScoped<IAttackService, AttackService>();
+            services.AddScoped<IFirearmService, FirearmService>();
 
             services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
