@@ -34,6 +34,8 @@ namespace api.Models.DTOs.Firearm
         public int BulletUse { get; set; }
 
         [Required]
+        [EnumDataType(typeof(ImprintType), ErrorMessage = "Invalid imprint type. Valid values are: \n" +
+            "Imprint0, Imprint1, Imprint221, Imprint223, Imprint224, Imprint234")]
         public ImprintType Imprints { get; set; }
 
         [Required]
