@@ -6,6 +6,7 @@ using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using api.Interfaces;
 using api.Mapping;
+using CoreEx;
 
 namespace api.Tests.Services.ScalingTests
 {
@@ -29,7 +30,7 @@ namespace api.Tests.Services.ScalingTests
         }
 
         [Fact]
-        public async Task GetScalingByIdAsync_ReturnsScalingDto_WhenScalingExists()
+        public async Task GetScalingByIdAsync_ScalingExists_ReturnsScalingDto()
         {
             using var context = new AppDbContext(_dbOptions);
             context.Scalings.Add(new Scaling { Id = 1, Name = "Test Scaling" });
@@ -41,6 +42,15 @@ namespace api.Tests.Services.ScalingTests
 
             Assert.NotNull(result);
             Assert.Equal("Test Scaling", result.Name);
+        }
+
+        [Fact]
+        public async Task GetScalingByIdAsync_ScalingDoesNotExist_ReturnsNotFoundException()
+        {
+            using var context = new AppDbContext(_dbOptions);
+            var service = new ScalingService(context, _mapper);
+
+            await Assert.ThrowsAsync<NotFoundException>(() => service.GetScalingByIdAsync(999));
         }
 
         [Fact]
@@ -113,7 +123,7 @@ namespace api.Tests.Services.ScalingTests
         }
 
         [Fact]
-        public async Task GetScalingByWeaponNameAsync_ReturnsScalingDto_WhenWeaponExists()
+        public async Task GetScalingByWeaponNameAsync_WeaponExists_ReturnsScalingDto()
         {
             using var context = new AppDbContext(_dbOptions);
 

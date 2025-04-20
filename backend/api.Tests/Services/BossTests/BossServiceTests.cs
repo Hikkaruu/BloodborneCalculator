@@ -5,6 +5,7 @@ using api.Models.Entities;
 using api.Persistence.Data;
 using api.Services;
 using AutoMapper;
+using CoreEx;
 using Microsoft.EntityFrameworkCore;
 
 namespace api.Tests.Services.BossTests
@@ -44,14 +45,12 @@ namespace api.Tests.Services.BossTests
         }
 
         [Fact]
-        public async Task GetBossByIdAsync_BossDoesNotExist_ReturnsNull()
+        public async Task GetBossByIdAsync_BossDoesNotExist_ReturnsNotFoundException()
         {
             using var context = new AppDbContext(_dbOptions);
             var service = new BossService(context, _mapper);
 
-            var result = await service.GetBossByIdAsync(99);
-
-            Assert.Null(result);
+            await Assert.ThrowsAsync<NotFoundException>(() => service.GetBossByIdAsync(99));
         }
 
         [Fact]
