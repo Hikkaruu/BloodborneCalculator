@@ -7,7 +7,6 @@ using AutoMapper;
 using CoreEx;
 using Microsoft.EntityFrameworkCore;
 using api.Tests.Helpers.TestHelpers;
-using api.Models.DTOs.Scaling;
 using api.Models.Filters;
 
 namespace api.Tests.Services.BossTests
