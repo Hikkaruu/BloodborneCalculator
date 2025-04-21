@@ -2,6 +2,7 @@
 using api.Models.DTOs.Attack;
 using api.Models.Entities;
 using api.Models.Filters;
+using api.Models.Filters.Helpers;
 using api.Persistence.Data;
 using AutoMapper;
 using CoreEx;
@@ -75,34 +76,29 @@ namespace api.Services
 
         public async Task<IEnumerable<AttackDto>> GetAttacksByFilterAsync(AttackFilter filter)
         {
+            if (filter == null || !filter.HasFilters)
+                return Enumerable.Empty<AttackDto>();
+
             var query = _context.Attacks.AsQueryable();
 
-            if (filter.HasFilters)
-            {
-                if (!string.IsNullOrWhiteSpace(filter.WeaponName))
-                    query = query.Where(a => a.TricksterWeapons.Name.Contains(filter.WeaponName));
+            if (!string.IsNullOrWhiteSpace(filter.AttackName))
+                query = query.Where(a => a.Name.Contains(filter.AttackName));
 
-                if (filter.Damage.HasValue)
-                    query = query.Where(a => a.Damage == filter.Damage.Value);
+            query = query.ApplyRangeFilter(filter.Damage, filter.DamageMin, filter.DamageMax, a => a.Damage);
+            query = query.ApplyRangeFilter(filter.ExtraDamage, filter.ExtraDamageMin, filter.ExtraDamageMax, a => a.ExtraDamage);
+            query = query.ApplyRangeFilter(filter.ExtraDamageCount, filter.ExtraDamageCountMin, filter.ExtraDamageCountMax, a => a.ExtraDamageCount);
 
-                if (filter.ExtraDamage.HasValue)
-                    query = query.Where(a => a.ExtraDamage == filter.ExtraDamage.Value);
+            if (filter.AttackType1.HasValue)
+                query = query.Where(a => a.AttackType1 == filter.AttackType1.Value);
 
-                if (filter.ExtraDamageCount.HasValue)
-                    query = query.Where(a => a.ExtraDamageCount == filter.ExtraDamageCount.Value);
+            if (filter.AttackType2.HasValue)
+                query = query.Where(a => a.AttackType2 == filter.AttackType2.Value);
 
-                if (filter.AttackType1.HasValue)
-                    query = query.Where(a => a.AttackType1 == filter.AttackType1.Value);
+            if (filter.AttackMode.HasValue)
+                query = query.Where(a => a.AttackMode == filter.AttackMode.Value);
 
-                if (filter.AttackType2.HasValue)
-                    query = query.Where(a => a.AttackType2 == filter.AttackType2.Value);
-
-                if (filter.AttackMode.HasValue)
-                    query = query.Where(a => a.AttackMode == filter.AttackMode.Value);
-
-                if (filter.WeaponId.HasValue)
-                    query = query.Where(a => a.TricksterWeaponId == filter.WeaponId.Value);
-            }
+            if (filter.WeaponId.HasValue)
+                query = query.Where(a => a.TricksterWeaponId == filter.WeaponId.Value);
 
             var attacks = await query.ToListAsync();
             return _mapper.Map<IEnumerable<AttackDto>>(attacks);

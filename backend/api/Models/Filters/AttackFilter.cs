@@ -3,10 +3,16 @@
 namespace api.Models.Filters
 {
     public record AttackFilter(
-        string? WeaponName = null,
+        string? AttackName = null,
         decimal? Damage = null,
+        decimal? DamageMin = null,
+        decimal? DamageMax = null,
         decimal? ExtraDamage = null,
+        decimal? ExtraDamageMin = null,
+        decimal? ExtraDamageMax = null,
         int? ExtraDamageCount = null,
+        int? ExtraDamageCountMin = null,
+        int? ExtraDamageCountMax = null,
         AttackType? AttackType1 = null,
         AttackType? AttackType2 = null,
         AttackMode? AttackMode = null,
@@ -14,10 +20,10 @@ namespace api.Models.Filters
     )
     {
         public bool HasFilters =>
-            !string.IsNullOrWhiteSpace(WeaponName) ||
-            Damage.HasValue ||
-            ExtraDamage.HasValue ||
-            ExtraDamageCount.HasValue ||
+            !string.IsNullOrWhiteSpace(AttackName) ||
+            Damage.HasValue || DamageMin.HasValue || DamageMax.HasValue ||
+            ExtraDamage.HasValue || ExtraDamageMin.HasValue || ExtraDamageMax.HasValue ||
+            ExtraDamageCount.HasValue || ExtraDamageCountMin.HasValue || ExtraDamageCountMax.HasValue ||
             AttackType1.HasValue ||
             AttackType2.HasValue ||
             AttackMode.HasValue ||
