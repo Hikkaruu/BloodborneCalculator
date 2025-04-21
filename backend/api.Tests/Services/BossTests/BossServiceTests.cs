@@ -247,6 +247,7 @@ namespace api.Tests.Services.BossTests
             new object[] { new BossFilter { PhysicalDefenseMin = 150 }, new string[] { "Boss B" } },
             new object[] { new BossFilter { PhysicalDefenseMax = 150 }, new string[] { "Boss A" } },
             new object[] { new BossFilter { BossName = "NonExistingBoss" }, new string[] { } },
+            new object[] { new BossFilter { BossName = "Boss A" }, new string[] { "Boss A" } },
             new object[] { new BossFilter { BossName = "" }, new string[] { } },
             new object[] { new BossFilter { }, new string[] { } }
         };
@@ -313,6 +314,5 @@ namespace api.Tests.Services.BossTests
 
             Assert.Equal(expectedBossNames.OrderBy(n => n), resultNames.OrderBy(n => n));
         }
-
     }
 }
