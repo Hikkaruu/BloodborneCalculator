@@ -78,7 +78,7 @@ namespace api.Services
             return true;
         }
 
-        public async Task<IEnumerable<BossDto>> GetAttacksByFilterAsync(BossFilter filter)
+        public async Task<IEnumerable<BossDto>> GetBossesByFilterAsync(BossFilter filter)
         {
             var query = _context.Bosses.AsQueryable();
 
