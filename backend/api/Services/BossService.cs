@@ -6,6 +6,7 @@ using api.Persistence.Data;
 using AutoMapper;
 using CoreEx;
 using Microsoft.EntityFrameworkCore;
+using api.Models.Filters.Helpers;
 
 namespace api.Services
 {
@@ -80,58 +81,41 @@ namespace api.Services
 
         public async Task<IEnumerable<BossDto>> GetBossesByFilterAsync(BossFilter filter)
         {
+            if (filter == null || !filter.HasFilters)
+                return Enumerable.Empty<BossDto>();
+
             var query = _context.Bosses.AsQueryable();
 
-            if (filter.BossName != null)
+            if (!string.IsNullOrEmpty(filter.BossName))
                 query = query.Where(b => b.Name.Contains(filter.BossName));
-   
-            if (filter.Health != null)
-                query = query.Where(b => b.Health == filter.Health);
 
-            if (filter.BloodEchoes != null)
-                query = query.Where(b => b.BloodEchoes == filter.BloodEchoes);
+            query = query.ApplyRangeFilter(filter.Health, filter.HealthMin, filter.HealthMax, b => b.Health);
+            query = query.ApplyRangeFilter(filter.BloodEchoes, filter.BloodEchoesMin, filter.BloodEchoesMax, b => b.BloodEchoes);
 
-            if (filter.IsInterruptible != null)
+            if (filter.IsInterruptible.HasValue)
                 query = query.Where(b => b.IsInterruptible == filter.IsInterruptible);
 
-            if (filter.IsRequired != null)
+            if (filter.IsRequired.HasValue)
                 query = query.Where(b => b.IsRequired == filter.IsRequired);
 
-            if (filter.IsKin != null)
+            if (filter.IsKin.HasValue)
                 query = query.Where(b => b.IsKin == filter.IsKin);
 
-            if (filter.IsWeakToSerrated != null)
+            if (filter.IsWeakToSerrated.HasValue)
                 query = query.Where(b => b.IsWeakToSerrated == filter.IsWeakToSerrated);
 
-            if (filter.IsWeakToRighteous != null)
+            if (filter.IsWeakToRighteous.HasValue)
                 query = query.Where(b => b.IsWeakToRighteous == filter.IsWeakToRighteous);
 
-            if (filter.PhysicalDefense != null)
-                query = query.Where(b => b.PhysicalDefense == filter.PhysicalDefense);
-
-            if (filter.BluntDefense != null)
-                query = query.Where(b => b.BluntDefense == filter.BluntDefense);
-
-            if (filter.ThrustDefense != null)
-                query = query.Where(b => b.ThrustDefense == filter.ThrustDefense);
-
-            if (filter.BloodtingeDefense != null)
-                query = query.Where(b => b.BloodtingeDefense == filter.BloodtingeDefense);
-
-            if (filter.ArcaneDefense != null)
-                query = query.Where(b => b.ArcaneDefense == filter.ArcaneDefense);
-
-            if (filter.FireDefense != null)
-                query = query.Where(b => b.FireDefense == filter.FireDefense);
-
-            if (filter.BoltDefense != null)
-                query = query.Where(b => b.BoltDefense == filter.BoltDefense);
-
-            if (filter.SlowPoisonResistance != null)
-                query = query.Where(b => b.SlowPoisonResistance == filter.SlowPoisonResistance);
-
-            if (filter.RapidPoisonResistance != null)
-                query = query.Where(b => b.RapidPoisonResistance == filter.RapidPoisonResistance);
+            query = query.ApplyRangeFilter(filter.PhysicalDefense, filter.PhysicalDefenseMin, filter.PhysicalDefenseMax, b => b.PhysicalDefense);
+            query = query.ApplyRangeFilter(filter.BluntDefense, filter.BluntDefenseMin, filter.BluntDefenseMax, b => b.BluntDefense);
+            query = query.ApplyRangeFilter(filter.ThrustDefense, filter.ThrustDefenseMin, filter.ThrustDefenseMax, b => b.ThrustDefense);
+            query = query.ApplyRangeFilter(filter.BloodtingeDefense, filter.BloodtingeDefenseMin, filter.BloodtingeDefenseMax, b => b.BloodtingeDefense);
+            query = query.ApplyRangeFilter(filter.ArcaneDefense, filter.ArcaneDefenseMin, filter.ArcaneDefenseMax, b => b.ArcaneDefense);
+            query = query.ApplyRangeFilter(filter.FireDefense, filter.FireDefenseMin, filter.FireDefenseMax, b => b.FireDefense);
+            query = query.ApplyRangeFilter(filter.BoltDefense, filter.BoltDefenseMin, filter.BoltDefenseMax, b => b.BoltDefense);
+            query = query.ApplyRangeFilter(filter.SlowPoisonResistance, filter.SlowPoisonResistanceMin, filter.SlowPoisonResistanceMax, b => b.SlowPoisonResistance);
+            query = query.ApplyRangeFilter(filter.RapidPoisonResistance, filter.RapidPoisonResistanceMin, filter.RapidPoisonResistanceMax, b => b.RapidPoisonResistance);
 
             var bosses = await query.ToListAsync();
             return _mapper.Map<IEnumerable<BossDto>>(bosses);
