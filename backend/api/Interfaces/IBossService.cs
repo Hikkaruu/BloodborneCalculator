@@ -10,6 +10,6 @@ namespace api.Interfaces
         Task<BossDto> CreateBossAsync(CreateBossDto createDto);
         Task<BossDto> UpdateBossAsync(int id, UpdateBossDto updateDto);
         Task<bool> DeleteBossAsync(int id);
-        Task<IEnumerable<BossDto>> GetAttacksByFilterAsync(BossFilter filter);
+        Task<IEnumerable<BossDto>> GetBossesByFilterAsync(BossFilter filter);
     }
 }
