@@ -2,6 +2,7 @@
 using api.Models.DTOs.Firearm;
 using api.Models.Entities;
 using api.Models.Filters;
+using api.Models.Filters.Helpers;
 using api.Persistence.Data;
 using AutoMapper;
 using CoreEx;
@@ -74,8 +75,11 @@ namespace api.Services
             return true;
         }
 
-        public async Task<IEnumerable<FirearmDto>> GetAttacksByFilterAsync(FirearmFilter filter)
+        public async Task<IEnumerable<FirearmDto>> GetFirearmsByFilterAsync(FirearmFilter filter)
         {
+            if (filter == null || !filter.HasFilters)
+                return Enumerable.Empty<FirearmDto>();
+
             var query = _context.Firearms.AsQueryable();
 
             if (filter.HasFilters)
@@ -83,38 +87,20 @@ namespace api.Services
                 if (!string.IsNullOrWhiteSpace(filter.FirearmName))
                     query = query.Where(f => f.Name.Contains(filter.FirearmName));
 
-                if (filter.PhysicalAttack.HasValue)
-                    query = query.Where(f => f.PhysicalAttack == filter.PhysicalAttack.Value);
-
-                if (filter.BloodAttack.HasValue)
-                    query = query.Where(f => f.BloodAttack == filter.BloodAttack.Value);
-
-                if (filter.ArcaneAttack.HasValue)
-                    query = query.Where(f => f.ArcaneAttack == filter.ArcaneAttack.Value);
-
-                if (filter.FireAttack.HasValue)
-                    query = query.Where(f => f.FireAttack == filter.FireAttack.Value);
-
-                if (filter.BoltAttack.HasValue)
-                    query = query.Where(f => f.BoltAttack == filter.BoltAttack.Value);
-
-                if (filter.BulletUse.HasValue)
-                    query = query.Where(f => f.BulletUse == filter.BulletUse.Value);
+                query = query.ApplyRangeFilter(filter.PhysicalAttack, filter.PhysicalAttackMin, filter.PhysicalAttackMax, f => f.PhysicalAttack);
+                query = query.ApplyRangeFilter(filter.BloodAttack, filter.BloodAttackMin, filter.BloodAttackMax, f => f.BloodAttack);
+                query = query.ApplyRangeFilter(filter.ArcaneAttack, filter.ArcaneAttackMin, filter.ArcaneAttackMax, f => f.ArcaneAttack);
+                query = query.ApplyRangeFilter(filter.FireAttack, filter.FireAttackMin, filter.FireAttackMax, f => f.FireAttack);
+                query = query.ApplyRangeFilter(filter.BoltAttack, filter.BoltAttackMin, filter.BoltAttackMax, f => f.BoltAttack);
+                query = query.ApplyRangeFilter(filter.BulletUse, filter.BulletUseMin, filter.BulletUseMax, f => f.BulletUse);
 
                 if (filter.Imprints.HasValue)
                     query = query.Where(f => f.Imprints == filter.Imprints.Value);
 
-                if (filter.StrengthRequirement.HasValue)
-                    query = query.Where(f => f.StrengthRequirement == filter.StrengthRequirement.Value);
-
-                if (filter.SkillRequirement.HasValue)
-                    query = query.Where(f => f.SkillRequirement == filter.SkillRequirement.Value);
-
-                if (filter.BloodtingeRequirement.HasValue)
-                    query = query.Where(f => f.BloodtingeRequirement == filter.BloodtingeRequirement.Value);
-
-                if (filter.ArcaneRequirement.HasValue)
-                    query = query.Where(f => f.ArcaneRequirement == filter.ArcaneRequirement.Value);
+                query =query.ApplyRangeFilter(filter.StrengthRequirement, filter.StrengthRequirementMin, filter.StrengthRequirementMax, f => f.StrengthRequirement);
+                query = query.ApplyRangeFilter(filter.SkillRequirement, filter.SkillRequirementMin, filter.SkillRequirementMax, f => f.SkillRequirement);
+                query = query.ApplyRangeFilter(filter.BloodtingeRequirement, filter.BloodtingeRequirementMin, filter.BloodtingeRequirementMax, f => f.BloodtingeRequirement);
+                query = query.ApplyRangeFilter(filter.ArcaneRequirement, filter.ArcaneRequirementMin, filter.ArcaneRequirementMax, f => f.ArcaneRequirement);
             }
 
             var firearms = await query.ToListAsync();

@@ -10,6 +10,6 @@ namespace api.Interfaces
         Task<FirearmDto> CreateFirearmAsync(CreateFirearmDto createDto);
         Task<FirearmDto> UpdateFirearmAsync(int id, UpdateFirearmDto updateDto);
         Task<bool> DeleteFirearmAsync(int id);
-        Task<IEnumerable<FirearmDto>> GetAttacksByFilterAsync(FirearmFilter filter);
+        Task<IEnumerable<FirearmDto>> GetFirearmsByFilterAsync(FirearmFilter filter);
     }
 }
