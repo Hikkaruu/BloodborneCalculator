@@ -2,6 +2,7 @@
 using api.Models.DTOs.TricksterWeapon;
 using api.Models.Entities;
 using api.Models.Filters;
+using api.Models.Filters.Helpers;
 using api.Persistence.Data;
 using AutoMapper;
 using CoreEx;
@@ -75,31 +76,21 @@ namespace api.Services
 
         public async Task<IEnumerable<TricksterWeaponDto>> GetTricksterWeaponsByFilterAsync(TricksterWeaponFilter filter)
         {
+            if (filter == null || !filter.HasFilters)
+                return Enumerable.Empty<TricksterWeaponDto>();
+
             var query = _context.TricksterWeapons.AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(filter.TricksterWeaponName))
                 query = query.Where(t => t.Name.Contains(filter.TricksterWeaponName));
 
-            if (filter.PhysicalAttack.HasValue)
-                query = query.Where(t => t.PhysicalAttack == filter.PhysicalAttack);
-
-            if (filter.BloodAttack.HasValue)
-                query = query.Where(t => t.BloodAttack == filter.BloodAttack);
-
-            if (filter.ArcaneAttack.HasValue)
-                query = query.Where(t => t.ArcaneAttack == filter.ArcaneAttack);
-
-            if (filter.FireAttack.HasValue)
-                query = query.Where(t => t.FireAttack == filter.FireAttack);
-
-            if (filter.BoltAttack.HasValue)
-                query = query.Where(t => t.BoltAttack == filter.BoltAttack);
-
-            if (filter.BulletUse.HasValue)
-                query = query.Where(t => t.BulletUse == filter.BulletUse);
-
-            if (filter.RapidPoison.HasValue)
-                query = query.Where(t => t.RapidPoison == filter.RapidPoison);
+            query = query.ApplyRangeFilter(filter.PhysicalAttack, filter.PhysicalAttackMin, filter.PhysicalAttackMax, t => t.PhysicalAttack);
+            query = query.ApplyRangeFilter(filter.BloodAttack, filter.BloodAttackMin, filter.BloodAttackMax, t => t.BloodAttack);
+            query = query.ApplyRangeFilter(filter.ArcaneAttack, filter.ArcaneAttackMin, filter.ArcaneAttackMax, t => t.ArcaneAttack);
+            query = query.ApplyRangeFilter(filter.FireAttack, filter.FireAttackMin, filter.FireAttackMax, t => t.FireAttack);
+            query = query.ApplyRangeFilter(filter.BoltAttack, filter.BoltAttackMin, filter.BoltAttackMax, t => t.BoltAttack);
+            query = query.ApplyRangeFilter(filter.BulletUse, filter.BulletUseMin, filter.BulletUseMax, t => t.BulletUse);
+            query = query.ApplyRangeFilter(filter.RapidPoison, filter.RapidPoisonMin, filter.RapidPoisonMax, t => t.RapidPoison);
 
             if (filter.ImprintsNormal.HasValue)
                 query = query.Where(t => t.ImprintsNormal == filter.ImprintsNormal);
@@ -110,23 +101,12 @@ namespace api.Services
             if (filter.ImprintsLost.HasValue)
                 query = query.Where(t => t.ImprintsLost == filter.ImprintsLost);
 
-            if (filter.Rally.HasValue)
-                query = query.Where(t => t.Rally == filter.Rally);
-
-            if (filter.StrengthRequirement.HasValue)
-                query = query.Where(t => t.StrengthRequirement == filter.StrengthRequirement);
-
-            if (filter.SkillRequirement.HasValue)
-                query = query.Where(t => t.SkillRequirement == filter.SkillRequirement);
-
-            if (filter.BloodtingeRequirement.HasValue)
-                query = query.Where(t => t.BloodtingeRequirement == filter.BloodtingeRequirement);
-
-            if (filter.ArcaneRequirement.HasValue)
-                query = query.Where(t => t.ArcaneRequirement == filter.ArcaneRequirement);
-
-            if (filter.MaxUpgradeAttack.HasValue)
-                query = query.Where(t => t.MaxUpgradeAttack == filter.MaxUpgradeAttack);
+            query = query.ApplyRangeFilter(filter.Rally, filter.RallyMin, filter.RallyMax, t => t.Rally);
+            query = query.ApplyRangeFilter(filter.StrengthRequirement, filter.StrengthRequirementMin, filter.StrengthRequirementMax, t => t.StrengthRequirement);
+            query = query.ApplyRangeFilter(filter.SkillRequirement, filter.SkillRequirementMin, filter.SkillRequirementMax, t => t.SkillRequirement);
+            query = query.ApplyRangeFilter(filter.BloodtingeRequirement, filter.BloodtingeRequirementMin, filter.BloodtingeRequirementMax, t => t.BloodtingeRequirement);
+            query = query.ApplyRangeFilter(filter.ArcaneRequirement, filter.ArcaneRequirementMin, filter.ArcaneRequirementMax, t => t.ArcaneRequirement);
+            query = query.ApplyRangeFilter(filter.MaxUpgradeAttack, filter.MaxUpgradeAttackMin, filter.MaxUpgradeAttackMax, t => t.MaxUpgradeAttack);
 
             var tricksterWeapons = await query.ToListAsync();
             return _mapper.Map<IEnumerable<TricksterWeaponDto>>(tricksterWeapons);

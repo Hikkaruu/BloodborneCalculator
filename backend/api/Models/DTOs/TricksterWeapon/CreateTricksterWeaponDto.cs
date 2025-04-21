@@ -79,7 +79,7 @@ namespace api.Models.DTOs.TricksterWeapon
 
         [Required]
         [Url(ErrorMessage = "Provide valid URL")]
-        [Range(0, 500, ErrorMessage = "URL can't be longer than 500 characters")]
+        [MaxLength(500, ErrorMessage = "URL can't be longer than 500 characters")]
         public string? ImageUrl { get; set; } = string.Empty;
 
         [Required]
