@@ -1,7 +1,6 @@
 ﻿using api.Interfaces;
 using api.Models.DTOs.Firearm;
 using api.Models.Filters;
-using api.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers
