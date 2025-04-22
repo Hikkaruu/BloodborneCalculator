@@ -38,8 +38,9 @@ namespace api.Tests.Services.FirearmTests
             using var context = new AppDbContext(_dbOptions);
 
             context.Scalings.Add(
-                new Scaling { 
-                    Id = 1, 
+                new Scaling
+                {
+                    Id = 1,
                     Name = "Scaling 1",
                     StrengthScaling = 1.0m,
                     SkillScaling = 1.0m,
@@ -48,8 +49,9 @@ namespace api.Tests.Services.FirearmTests
                 });
 
             context.Firearms.Add(
-                new Firearm { 
-                    Id = 1, 
+                new Firearm
+                {
+                    Id = 1,
                     Name = "Firearm 1",
                     PhysicalAttack = 10,
                     BloodAttack = 5,
@@ -63,7 +65,7 @@ namespace api.Tests.Services.FirearmTests
                     BloodtingeRequirement = 10,
                     ArcaneRequirement = 10,
                     ImageUrl = "http://example.com/image.png",
-                    ScalingId = 1,
+                    ScalingId = 1
                 });
 
             await context.SaveChangesAsync();
@@ -126,8 +128,8 @@ namespace api.Tests.Services.FirearmTests
                     BloodtingeRequirement = 10,
                     ArcaneRequirement = 10,
                     ImageUrl = "http://example.com/image.png",
-                    ScalingId = 1,
-                }, 
+                    ScalingId = 1
+                },
                 new Firearm
                 {
                     Id = 2,
@@ -144,7 +146,7 @@ namespace api.Tests.Services.FirearmTests
                     BloodtingeRequirement = 20,
                     ArcaneRequirement = 20,
                     ImageUrl = "http://example.com/image2.png",
-                    ScalingId = 2,
+                    ScalingId = 2
                 });
             await context.SaveChangesAsync();
 
@@ -231,7 +233,7 @@ namespace api.Tests.Services.FirearmTests
                 BloodtingeRequirement = 10,
                 ArcaneRequirement = 10,
                 ImageUrl = "http://example.com/image2.png",
-                ScalingId = 1
+                ScalingId = 2
             };
 
             var service = new FirearmService(context, _mapper);
@@ -252,7 +254,6 @@ namespace api.Tests.Services.FirearmTests
             Assert.Equal(10, result.BloodtingeRequirement);
             Assert.Equal(10, result.ArcaneRequirement);
             Assert.Equal("http://example.com/image2.png", result.ImageUrl);
-            Assert.Equal(1, result.ScalingId);
         }
 
         [Fact]
@@ -274,7 +275,6 @@ namespace api.Tests.Services.FirearmTests
                 BloodtingeRequirement = 10,
                 ArcaneRequirement = 10,
                 ImageUrl = "http://example.com/image.png",
-                ScalingId = 1
             };
 
             _testHelpers.ValidateDto(firearm);
@@ -355,7 +355,6 @@ namespace api.Tests.Services.FirearmTests
                     BloodtingeRequirement = 10,
                     ArcaneRequirement = 10,
                     ImageUrl = "http://example.com/image.png",
-                    ScalingId = 1,
                 },
                 new Firearm
                 {
@@ -373,7 +372,6 @@ namespace api.Tests.Services.FirearmTests
                     BloodtingeRequirement = 20,
                     ArcaneRequirement = 20,
                     ImageUrl = "http://example.com/image2.png",
-                    ScalingId = 2,
                 });
 
             await context.SaveChangesAsync();
@@ -384,6 +382,88 @@ namespace api.Tests.Services.FirearmTests
             var resultNames = result.Select(b => b.Name).ToArray();
 
             Assert.Equal(expectedFirearmNames.OrderBy(n => n), resultNames.OrderBy(n => n));
+        }
+
+        public static IEnumerable<object[]> CanWieldFirearmTestData =>
+        new List<object[]>
+        {
+            new object[] { 1, new int[] { 10, 10, 10, 10 }, true },
+            new object[] { 1, new int[] { 12, 8, 11, 3 }, false },
+            new object[] { 2, new int[] { 20, 20, 20, 20 }, true },
+            new object[] { 2, new int[] { 10, 10, 10, 10 }, false }
+        };
+
+        [Theory]
+        [MemberData(nameof(CanWieldFirearmTestData))]
+        public async Task CanWieldFirearmAsync_ReturnsBool(int id, int[] requirements, bool expectedResult)
+        {
+            using var context = new AppDbContext(_dbOptions);
+
+            context.Scalings.AddRange(
+                new Scaling
+                {
+                    Id = 1,
+                    Name = "Scaling 1",
+                    StrengthScaling = 1.0m,
+                    SkillScaling = 1.0m,
+                    BloodtingeScaling = 1.0m,
+                    ArcaneScaling = 1.0m,
+                },
+                new Scaling
+                {
+                    Id = 2,
+                    Name = "Scaling 2",
+                    StrengthScaling = 2.0m,
+                    SkillScaling = 2.0m,
+                    BloodtingeScaling = 2.0m,
+                    ArcaneScaling = 2.0m,
+                });
+
+            context.Firearms.AddRange(
+                new Firearm
+                {
+                    Id = 1,
+                    Name = "Firearm 1",
+                    PhysicalAttack = 10,
+                    BloodAttack = 5,
+                    ArcaneAttack = 3,
+                    FireAttack = 2,
+                    BoltAttack = 1,
+                    BulletUse = 1,
+                    Imprints = ImprintType.Imprint0,
+                    StrengthRequirement = 10,
+                    SkillRequirement = 10,
+                    BloodtingeRequirement = 10,
+                    ArcaneRequirement = 10,
+                    ImageUrl = "http://example.com/image.png",
+                    ScalingId = 1
+                },
+                new Firearm
+                {
+                    Id = 2,
+                    Name = "Firearm 2",
+                    PhysicalAttack = 20,
+                    BloodAttack = 15,
+                    ArcaneAttack = 13,
+                    FireAttack = 12,
+                    BoltAttack = 11,
+                    BulletUse = 2,
+                    Imprints = ImprintType.Imprint1,
+                    StrengthRequirement = 20,
+                    SkillRequirement = 20,
+                    BloodtingeRequirement = 20,
+                    ArcaneRequirement = 20,
+                    ImageUrl = "http://example.com/image2.png",
+                    ScalingId = 2
+                });
+
+            await context.SaveChangesAsync();
+
+            var service = new FirearmService(context, _mapper);          
+
+            var result = await service.CanWieldFirearm(id, requirements[0], requirements[1], requirements[2], requirements[3]);
+
+            Assert.Equal(expectedResult, result);
         }
     }
 }

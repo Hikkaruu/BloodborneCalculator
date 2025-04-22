@@ -1,4 +1,5 @@
-﻿using api.Models.Enums;
+﻿using api.Models.DTOs.Scaling;
+using api.Models.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace api.Models.DTOs.Firearm
@@ -58,7 +59,6 @@ namespace api.Models.DTOs.Firearm
         [Url]
         public string ImageUrl { get; set; } = string.Empty;
 
-        public int ScalingId { get; set; }
-        public string? ScalingName { get; set; }
+        public ScalingDto? Scaling { get; set; }
     }
 }

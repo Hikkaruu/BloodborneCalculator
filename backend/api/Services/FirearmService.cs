@@ -14,6 +14,7 @@ namespace api.Services
     {
         private readonly AppDbContext _context;
         private readonly IMapper _mapper;
+        private WeaponCalculationHelper _weaponCalculationHelper = new();
 
         public FirearmService(AppDbContext context, IMapper mapper)
         {
@@ -105,6 +106,86 @@ namespace api.Services
 
             var firearms = await query.ToListAsync();
             return _mapper.Map<IEnumerable<FirearmDto>>(firearms);
+        }
+
+        public async Task<bool> CanWieldFirearm(int id, int strength, int skill, int bloodtinge, int arcane)
+        {
+            var firearm = await GetFirearmByIdAsync(id);
+
+            if (firearm == null)
+                throw new NotFoundException($"Firearm with ID: {id} not found");
+            
+            return (strength >= firearm.StrengthRequirement && skill >= firearm.SkillRequirement &&
+                bloodtinge >= firearm.BloodtingeRequirement && arcane >= firearm.ArcaneRequirement);
+        }
+
+        public async Task<int> GetFirearmAttackRating(int id, int strength, int skill, int bloodtinge, int arcane, int weaponUpgradeLevel)
+        {
+            var firearm = await GetFirearmByIdAsync(id);
+
+            if (!CanWieldFirearm(id, strength, skill, bloodtinge, arcane).Result)
+                throw new NotFoundException($"Firearm with ID: {id} cannot be wielded by the character");
+
+            if (firearm.Scaling == null)
+                throw new NotFoundException($"Scaling related to this firearm not found");
+
+            var scaling = firearm.Scaling;
+
+            int physicalAttackRating = 0;
+            int bloodAttackRating = 0;
+            int arcaneAttackRating = 0;
+            int fireAttackRating = 0;
+            int boltAttackRating = 0;
+
+            if (firearm.PhysicalAttack > 0)
+            {
+                double strengthScaling = _weaponCalculationHelper.getScaling(scaling.StrengthScaling, scaling.StrengthStep, weaponUpgradeLevel);
+                double skillScaling = _weaponCalculationHelper.getScaling(scaling.SkillScaling, scaling.SkillStep, weaponUpgradeLevel);
+
+                physicalAttackRating = (int)Math.Round(
+                    firearm.PhysicalAttack
+                    + (firearm.PhysicalAttack * _weaponCalculationHelper.getSaturation(strength) * strengthScaling)
+                    + (firearm.PhysicalAttack * _weaponCalculationHelper.getSaturation(skill) * skillScaling));
+            }
+
+            if (firearm.BloodAttack > 0)
+            {
+                double bloodtingeScaling = _weaponCalculationHelper.getScaling(scaling.BloodtingeScaling, scaling.BloodtingeStep, weaponUpgradeLevel);
+
+                bloodAttackRating = (int)Math.Round(
+                    firearm.BloodAttack
+                    + (firearm.BloodAttack * _weaponCalculationHelper.getSaturation(bloodtinge) * bloodtingeScaling));
+            }
+
+            if (firearm.ArcaneAttack > 0)
+            {
+                double arcaneScaling = _weaponCalculationHelper.getScaling(scaling.ArcaneScaling, scaling.ArcaneStep, weaponUpgradeLevel);
+                
+                arcaneAttackRating = (int)Math.Round(
+                    firearm.ArcaneAttack
+                    + (firearm.ArcaneAttack * _weaponCalculationHelper.getSaturation(arcane) * arcaneScaling));
+            }
+
+            if (firearm.FireAttack > 0)
+            {
+                double arcaneScaling = _weaponCalculationHelper.getScaling(scaling.ArcaneScaling, scaling.ArcaneStep, weaponUpgradeLevel);
+
+                fireAttackRating = (int)Math.Round(
+                    firearm.FireAttack
+                    + (firearm.FireAttack * _weaponCalculationHelper.getSaturation(arcane) * arcaneScaling));
+            }
+
+            if (firearm.BoltAttack > 0)
+            {
+                double arcaneScaling = _weaponCalculationHelper.getScaling(scaling.ArcaneScaling, scaling.ArcaneStep, weaponUpgradeLevel);
+
+                boltAttackRating = (int)Math.Round(
+                    firearm.BoltAttack
+                    + (firearm.BoltAttack * _weaponCalculationHelper.getSaturation(arcane) * arcaneScaling));
+            }
+            
+            int attackRating = physicalAttackRating + bloodAttackRating + arcaneAttackRating + fireAttackRating + boltAttackRating;
+            return attackRating;
         }
     }
 }

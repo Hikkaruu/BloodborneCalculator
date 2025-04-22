@@ -11,5 +11,7 @@ namespace api.Interfaces
         Task<FirearmDto> UpdateFirearmAsync(int id, UpdateFirearmDto updateDto);
         Task<bool> DeleteFirearmAsync(int id);
         Task<IEnumerable<FirearmDto>> GetFirearmsByFilterAsync(FirearmFilter filter);
+        Task<bool> CanWieldFirearm(int id, int strength, int skill, int bloodtinge, int arcane);
+        Task<int> GetFirearmAttackRating(int id, int strength, int skill, int bloodtinge, int arcane, int weaponUpgradeLevel);
     }
 }
