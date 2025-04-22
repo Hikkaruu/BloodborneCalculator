@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace api.Models.Filters.Helpers
+namespace api.Helpers
 {
     public static class QueryableExtensions
     {

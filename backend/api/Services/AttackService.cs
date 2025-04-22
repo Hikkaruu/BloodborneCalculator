@@ -1,8 +1,8 @@
-﻿using api.Interfaces;
+﻿using api.Helpers;
+using api.Interfaces;
 using api.Models.DTOs.Attack;
 using api.Models.Entities;
 using api.Models.Filters;
-using api.Models.Filters.Helpers;
 using api.Persistence.Data;
 using AutoMapper;
 using CoreEx;

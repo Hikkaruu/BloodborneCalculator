@@ -6,7 +6,7 @@ using api.Persistence.Data;
 using AutoMapper;
 using CoreEx;
 using Microsoft.EntityFrameworkCore;
-using api.Models.Filters.Helpers;
+using api.Helpers;
 
 namespace api.Services
 {
