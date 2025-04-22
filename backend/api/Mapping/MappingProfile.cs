@@ -48,7 +48,7 @@ namespace api.Mapping
 
             // Firearm Mapping
             CreateMap<Firearm, FirearmDto>()
-                .ForMember(dest => dest.ScalingName, opt => opt.MapFrom(src => src.Scalings.Name));
+                .ForMember(dest => dest.Scaling, opt => opt.MapFrom(src => src.Scalings));
 
             CreateMap<CreateFirearmDto, Firearm>();
 
