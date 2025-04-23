@@ -26,6 +26,7 @@ namespace api.Services
         {
             var tricksterWeapon = await _context.TricksterWeapons
                 .Include(t => t.Scaling)
+                .Include(t => t.Attacks)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(t => t.Id == id);
 
@@ -39,6 +40,7 @@ namespace api.Services
         {
             var tricksterWeapons = await _context.TricksterWeapons
                 .Include(t => t.Scaling)
+                .Include(t => t.Attacks)
                 .AsNoTracking()
                 .ToListAsync();
 
