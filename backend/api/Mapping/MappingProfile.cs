@@ -23,20 +23,16 @@ namespace api.Mapping
 
             // Scaling Mapping
             CreateMap<Scaling, ScalingDto>()
-                .ForMember(dest => dest.TricksterWeaponId, opt =>
-                    opt.MapFrom(src => src.TricksterWeapons != null ? src.TricksterWeapons.Id : (int?)null))
-                .ForMember(dest => dest.TricksterWeaponName, opt =>
-                    opt.MapFrom(src => src.TricksterWeapons != null ? src.TricksterWeapons.Name : null))
-                .ForMember(dest => dest.FirearmId,
-                    opt => opt.MapFrom(src => src.Firearms != null ? src.Firearms.Id : (int?)null))
-                .ForMember(dest => dest.FirearmName,
-                    opt => opt.MapFrom(src => src.Firearms != null ? src.Firearms.Name : null));
-            
+                .ForMember(dest => dest.TricksterWeaponId, opt => opt.MapFrom(src => src.TricksterWeapons.Id))
+                .ForMember(dest => dest.FirearmId, opt => opt.MapFrom(src => src.Firearms.Id));
+
+            CreateMap<Scaling, ScalingForWeaponDto>();
+
             CreateMap<CreateScalingDto, Scaling>();
             
             CreateMap<UpdateScalingDto, Scaling>()
                 .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
-
+       
             // Attack Mapping
             CreateMap<Attack, AttackDto>()
                 .ForMember(dest => dest.TricksterWeaponName, opt => opt.MapFrom(src => src.TricksterWeapons.Name));
@@ -57,7 +53,7 @@ namespace api.Mapping
 
             // TricksterWeapon Mapping
             CreateMap<TricksterWeapon, TricksterWeaponDto>()
-                .ForMember(dest => dest.ScalingName, opt => opt.MapFrom(src => src.Scalings.Name))
+                .ForMember(dest => dest.Scaling, opt => opt.MapFrom(src => src.Scaling))
                 .ForMember(dest => dest.Attacks, opt => opt.MapFrom(src => src.Attacks.Select(a => 
                     new AttackForTricksterWeaponDto
                     {
