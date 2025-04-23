@@ -2,14 +2,8 @@
 
 namespace api.Models.DTOs.Scaling
 {
-    public class ScalingDto
+    public class ScalingForWeaponDto
     {
-        public int Id { get; set; }
-
-        [Required]
-        [MaxLength(50)]
-        public string Name { get; set; } = string.Empty;
-
         [Required]
         [Range(0, 9.99)]
         public decimal StrengthScaling { get; set; }
@@ -41,8 +35,5 @@ namespace api.Models.DTOs.Scaling
         [Required]
         [Range(0, 9.999)]
         public decimal ArcaneStep { get; set; }
-
-        public int? TricksterWeaponId { get; set; }
-        public int? FirearmId { get; set; }
     }
 }

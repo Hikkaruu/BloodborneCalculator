@@ -59,6 +59,6 @@ namespace api.Models.DTOs.Firearm
         [Url]
         public string ImageUrl { get; set; } = string.Empty;
 
-        public ScalingDto? Scaling { get; set; }
+        public ScalingForWeaponDto? Scaling { get; set; }
     }
 }

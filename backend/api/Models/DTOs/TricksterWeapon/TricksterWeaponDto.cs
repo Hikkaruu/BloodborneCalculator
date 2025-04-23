@@ -1,4 +1,5 @@
-﻿using api.Models.Enums;
+﻿using api.Models.DTOs.Scaling;
+using api.Models.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace api.Models.DTOs.TricksterWeapon
@@ -76,8 +77,7 @@ namespace api.Models.DTOs.TricksterWeapon
         [Url]
         public string ImageUrl { get; set; } = string.Empty;
 
-        public int ScalingId { get; set; }
-        public string ScalingName { get; set; } = string.Empty;
-        public List<AttackForTricksterWeaponDto> Attacks { get; set; } = new();
+        public ScalingForWeaponDto? Scaling { get; set; }
+        public List<AttackForTricksterWeaponDto>? Attacks { get; set; }
     }
 }
