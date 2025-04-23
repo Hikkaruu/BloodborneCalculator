@@ -19,7 +19,7 @@ namespace api.Persistence.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<TricksterWeapon>()
-                .HasOne(tw => tw.Scalings)         
+                .HasOne(tw => tw.Scaling)         
                 .WithOne(s => s.TricksterWeapons)  
                 .HasForeignKey<TricksterWeapon>(tw => tw.ScalingId);
 
