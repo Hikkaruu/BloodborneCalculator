@@ -95,9 +95,9 @@ namespace api.Controllers
         {
             try
             {
-                var attack = await _attackService.GetAttacksByFilterAsync(filter);
+                var attacks = await _attackService.GetAttacksByFilterAsync(filter);
 
-                return Ok(attack);
+                return Ok(attacks);
             }
             catch (Exception ex)
             {

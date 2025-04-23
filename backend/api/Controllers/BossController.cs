@@ -101,9 +101,9 @@ namespace api.Controllers
         {
             try
             {
-                var boss = await _bossService.GetBossesByFilterAsync(filter);
+                var bosses = await _bossService.GetBossesByFilterAsync(filter);
 
-                return Ok(boss);
+                return Ok(bosses);
             }
             catch (Exception ex)
             {
