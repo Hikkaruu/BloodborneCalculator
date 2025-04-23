@@ -89,7 +89,7 @@ namespace api.Models.Entities
         [Column("scaling_id")]
         public int ScalingId { get; set; }
 
-        public Scaling Scalings { get; set; } = null!;
+        public Scaling Scaling { get; set; } = null!;
 
         public List<Attack> Attacks { get; set; } = new List<Attack>();
 

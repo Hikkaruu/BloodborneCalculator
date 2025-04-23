@@ -14,6 +14,7 @@ namespace api.Services
     {
         private readonly AppDbContext _context;
         private readonly IMapper _mapper;
+        private WeaponCalculationHelper _weaponCalculationHelper = new();
 
         public TricksterWeaponService(AppDbContext context, IMapper mapper)
         {
@@ -24,7 +25,7 @@ namespace api.Services
         public async Task<TricksterWeaponDto> GetTricksterWeaponByIdAsync(int id)
         {
             var tricksterWeapon = await _context.TricksterWeapons
-                .Include(t => t.Scalings)
+                .Include(t => t.Scaling)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(t => t.Id == id);
 
@@ -37,7 +38,7 @@ namespace api.Services
         public async Task<IEnumerable<TricksterWeaponDto>> GetAllTricksterWeaponsAsync()
         {
             var tricksterWeapons = await _context.TricksterWeapons
-                .Include(t => t.Scalings)
+                .Include(t => t.Scaling)
                 .AsNoTracking()
                 .ToListAsync();
 
@@ -110,6 +111,86 @@ namespace api.Services
 
             var tricksterWeapons = await query.ToListAsync();
             return _mapper.Map<IEnumerable<TricksterWeaponDto>>(tricksterWeapons);
+        }
+
+        public async Task<bool> CanWieldTricksterWeapon(int id, int strength, int skill, int bloodtinge, int arcane)
+        {
+            var tricksterWeapon = await GetTricksterWeaponByIdAsync(id);
+
+            if (tricksterWeapon == null)
+                throw new NotFoundException($"Trickster Weapon with ID: {id} not found");
+
+            return (strength >= tricksterWeapon.StrengthRequirement && skill >= tricksterWeapon.SkillRequirement &&
+                bloodtinge >= tricksterWeapon.BloodtingeRequirement && arcane >= tricksterWeapon.ArcaneRequirement);
+        }
+
+        public async Task<int> GetTricksterWeaponAttackRating(int id, int strength, int skill, int bloodtinge, int arcane, int weaponUpgradeLevel)
+        {
+            var tricksterWeapon = await GetTricksterWeaponByIdAsync(id);
+
+            if (!CanWieldTricksterWeapon(id, strength, skill, bloodtinge, arcane).Result)
+                throw new NotFoundException($"Trickster Weapon with ID: {id} cannot be wielded by the character");
+
+            if (tricksterWeapon.Scaling == null)
+                throw new NotFoundException($"Scaling related to this Trickster Weapon not found");
+
+            var scaling = tricksterWeapon.Scaling;
+
+            int physicalAttackRating = 0;
+            int bloodAttackRating = 0;
+            int arcaneAttackRating = 0;
+            int fireAttackRating = 0;
+            int boltAttackRating = 0;
+
+            if (tricksterWeapon.PhysicalAttack > 0)
+            {
+                double strengthScaling = _weaponCalculationHelper.getScaling(scaling.StrengthScaling, scaling.StrengthStep, weaponUpgradeLevel);
+                double skillScaling = _weaponCalculationHelper.getScaling(scaling.SkillScaling, scaling.SkillStep, weaponUpgradeLevel);
+
+                physicalAttackRating = (int)Math.Round(
+                    tricksterWeapon.PhysicalAttack
+                    + (tricksterWeapon.PhysicalAttack * _weaponCalculationHelper.getSaturation(strength) * strengthScaling)
+                    + (tricksterWeapon.PhysicalAttack * _weaponCalculationHelper.getSaturation(skill) * skillScaling));
+            }
+
+            if (tricksterWeapon.BloodAttack > 0)
+            {
+                double bloodtingeScaling = _weaponCalculationHelper.getScaling(scaling.BloodtingeScaling, scaling.BloodtingeStep, weaponUpgradeLevel);
+
+                bloodAttackRating = (int)Math.Round(
+                    tricksterWeapon.BloodAttack
+                    + (tricksterWeapon.BloodAttack * _weaponCalculationHelper.getSaturation(bloodtinge) * bloodtingeScaling));
+            }
+
+            if (tricksterWeapon.ArcaneAttack > 0)
+            {
+                double arcaneScaling = _weaponCalculationHelper.getScaling(scaling.ArcaneScaling, scaling.ArcaneStep, weaponUpgradeLevel);
+
+                arcaneAttackRating = (int)Math.Round(
+                    tricksterWeapon.ArcaneAttack
+                    + (tricksterWeapon.ArcaneAttack * _weaponCalculationHelper.getSaturation(arcane) * arcaneScaling));
+            }
+
+            if (tricksterWeapon.FireAttack > 0)
+            {
+                double arcaneScaling = _weaponCalculationHelper.getScaling(scaling.ArcaneScaling, scaling.ArcaneStep, weaponUpgradeLevel);
+
+                fireAttackRating = (int)Math.Round(
+                    tricksterWeapon.FireAttack
+                    + (tricksterWeapon.FireAttack * _weaponCalculationHelper.getSaturation(arcane) * arcaneScaling));
+            }
+
+            if (tricksterWeapon.BoltAttack > 0)
+            {
+                double arcaneScaling = _weaponCalculationHelper.getScaling(scaling.ArcaneScaling, scaling.ArcaneStep, weaponUpgradeLevel);
+
+                boltAttackRating = (int)Math.Round(
+                    tricksterWeapon.BoltAttack
+                    + (tricksterWeapon.BoltAttack * _weaponCalculationHelper.getSaturation(arcane) * arcaneScaling));
+            }
+
+            int attackRating = physicalAttackRating + bloodAttackRating + arcaneAttackRating + fireAttackRating + boltAttackRating;
+            return attackRating;
         }
     }
 }
