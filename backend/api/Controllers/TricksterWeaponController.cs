@@ -125,7 +125,14 @@ namespace api.Controllers
             {
                 var attackRating = await _tricksterWeaponService.GetTricksterWeaponAttackRating(id, strength, skill, bloodtinge, arcane, weaponUpgradeLevel);
 
-                return Ok(new { AttackRating = attackRating });
+                return Ok(new 
+                { 
+                    PhysicalAttackRating = attackRating[0],
+                    BloodAttackRating = attackRating[1],
+                    ArcaneAttackRating = attackRating[2],
+                    FireAttackRating = attackRating[3],
+                    BoltAttackRating = attackRating[4]
+                });
             }
             catch (Exception ex)
             {

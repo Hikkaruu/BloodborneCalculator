@@ -126,7 +126,7 @@ namespace api.Services
                 bloodtinge >= tricksterWeapon.BloodtingeRequirement && arcane >= tricksterWeapon.ArcaneRequirement);
         }
 
-        public async Task<int> GetTricksterWeaponAttackRating(int id, int strength, int skill, int bloodtinge, int arcane, int weaponUpgradeLevel)
+        public async Task<int[]> GetTricksterWeaponAttackRating(int id, int strength, int skill, int bloodtinge, int arcane, int weaponUpgradeLevel)
         {
             var tricksterWeapon = await GetTricksterWeaponByIdAsync(id);
 
@@ -148,50 +148,61 @@ namespace api.Services
             {
                 double strengthScaling = _weaponCalculationHelper.getScaling(scaling.StrengthScaling, scaling.StrengthStep, weaponUpgradeLevel);
                 double skillScaling = _weaponCalculationHelper.getScaling(scaling.SkillScaling, scaling.SkillStep, weaponUpgradeLevel);
-
-                physicalAttackRating = (int)Math.Round(
-                    tricksterWeapon.PhysicalAttack
-                    + (tricksterWeapon.PhysicalAttack * _weaponCalculationHelper.getSaturation(strength) * strengthScaling)
-                    + (tricksterWeapon.PhysicalAttack * _weaponCalculationHelper.getSaturation(skill) * skillScaling));
+                double tricksterWeaponAttack = (weaponUpgradeLevel == 10) ? tricksterWeapon.MaxUpgradeAttack
+                    : tricksterWeapon.PhysicalAttack + (tricksterWeapon.PhysicalAttack/10) * weaponUpgradeLevel;
+                
+                physicalAttackRating = (int)(
+                    tricksterWeaponAttack
+                    + (tricksterWeaponAttack * _weaponCalculationHelper.getSaturation(strength) * strengthScaling)
+                    + (tricksterWeaponAttack * _weaponCalculationHelper.getSaturation(skill) * skillScaling));
             }
 
             if (tricksterWeapon.BloodAttack > 0)
             {
                 double bloodtingeScaling = _weaponCalculationHelper.getScaling(scaling.BloodtingeScaling, scaling.BloodtingeStep, weaponUpgradeLevel);
+                double tricksterWeaponAttack = (weaponUpgradeLevel == 10) ? tricksterWeapon.MaxUpgradeAttack
+                    : tricksterWeapon.BloodAttack + (tricksterWeapon.BloodAttack/10) * weaponUpgradeLevel;
 
-                bloodAttackRating = (int)Math.Round(
-                    tricksterWeapon.BloodAttack
-                    + (tricksterWeapon.BloodAttack * _weaponCalculationHelper.getSaturation(bloodtinge) * bloodtingeScaling));
+                bloodAttackRating = (int)(
+                    tricksterWeaponAttack
+                    + (tricksterWeaponAttack * _weaponCalculationHelper.getSaturation(bloodtinge) * bloodtingeScaling));
             }
 
             if (tricksterWeapon.ArcaneAttack > 0)
             {
                 double arcaneScaling = _weaponCalculationHelper.getScaling(scaling.ArcaneScaling, scaling.ArcaneStep, weaponUpgradeLevel);
+                double tricksterWeaponAttack = (weaponUpgradeLevel == 10) ? tricksterWeapon.MaxUpgradeAttack
+                    : tricksterWeapon.ArcaneAttack + (tricksterWeapon.ArcaneAttack/10) * weaponUpgradeLevel;
 
-                arcaneAttackRating = (int)Math.Round(
-                    tricksterWeapon.ArcaneAttack
-                    + (tricksterWeapon.ArcaneAttack * _weaponCalculationHelper.getSaturation(arcane) * arcaneScaling));
+                arcaneAttackRating = (int)(
+                    tricksterWeaponAttack
+                    + (tricksterWeaponAttack * _weaponCalculationHelper.getSaturation(arcane) * arcaneScaling));
             }
 
             if (tricksterWeapon.FireAttack > 0)
             {
                 double arcaneScaling = _weaponCalculationHelper.getScaling(scaling.ArcaneScaling, scaling.ArcaneStep, weaponUpgradeLevel);
+                double tricksterWeaponAttack = (weaponUpgradeLevel == 10) ? tricksterWeapon.MaxUpgradeAttack
+                    : tricksterWeapon.FireAttack + (tricksterWeapon.FireAttack / 10) * weaponUpgradeLevel;
 
-                fireAttackRating = (int)Math.Round(
-                    tricksterWeapon.FireAttack
-                    + (tricksterWeapon.FireAttack * _weaponCalculationHelper.getSaturation(arcane) * arcaneScaling));
+                fireAttackRating = (int)(
+                    tricksterWeaponAttack
+                    + (tricksterWeaponAttack * _weaponCalculationHelper.getSaturation(arcane) * arcaneScaling));
             }
 
             if (tricksterWeapon.BoltAttack > 0)
             {
                 double arcaneScaling = _weaponCalculationHelper.getScaling(scaling.ArcaneScaling, scaling.ArcaneStep, weaponUpgradeLevel);
+                double tricksterWeaponAttack = (weaponUpgradeLevel == 10) ? tricksterWeapon.MaxUpgradeAttack
+                    : tricksterWeapon.BoltAttack + (tricksterWeapon.BoltAttack / 10) * weaponUpgradeLevel;
 
-                boltAttackRating = (int)Math.Round(
-                    tricksterWeapon.BoltAttack
-                    + (tricksterWeapon.BoltAttack * _weaponCalculationHelper.getSaturation(arcane) * arcaneScaling));
+                boltAttackRating = (int)(
+                    tricksterWeaponAttack
+                    + (tricksterWeaponAttack * _weaponCalculationHelper.getSaturation(arcane) * arcaneScaling));
             }
 
-            int attackRating = physicalAttackRating + bloodAttackRating + arcaneAttackRating + fireAttackRating + boltAttackRating;
+
+            int[] attackRating = [ physicalAttackRating, bloodAttackRating, arcaneAttackRating, fireAttackRating, boltAttackRating ];
             return attackRating;
         }
     }

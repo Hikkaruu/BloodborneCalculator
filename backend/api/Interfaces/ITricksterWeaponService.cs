@@ -12,6 +12,6 @@ namespace api.Interfaces
         Task<bool> DeleteTricksterWeaponAsync(int id);
         Task<IEnumerable<TricksterWeaponDto>> GetTricksterWeaponsByFilterAsync(TricksterWeaponFilter filter);
         Task<bool> CanWieldTricksterWeapon(int id, int strength, int skill, int bloodtinge, int arcane);
-        Task<int> GetTricksterWeaponAttackRating(int id, int strength, int skill, int bloodtinge, int arcane, int weaponUpgradeLevel);
+        Task<int[]> GetTricksterWeaponAttackRating(int id, int strength, int skill, int bloodtinge, int arcane, int weaponUpgradeLevel);
     }
 }
