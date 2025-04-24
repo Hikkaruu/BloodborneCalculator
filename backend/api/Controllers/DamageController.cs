@@ -1,4 +1,6 @@
 ﻿using api.Interfaces;
+using api.Models.DTOs.Damage;
+using api.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers
@@ -15,15 +17,32 @@ namespace api.Controllers
         }
 
         [HttpGet("Firearm/{firearmId}/Boss/{bossId}")]
-        public async Task<IActionResult> GetDamage(int firearmId, int bossId, [FromQuery] int strength, [FromQuery] int skill,
+        public async Task<IActionResult> GetFirearmDamage(int firearmId, int bossId, [FromQuery] int strength, [FromQuery] int skill,
             [FromQuery] int bloodtinge, [FromQuery] int arcane, [FromQuery] int weaponUpgradeLevel)
         {
             try
             {
-                var damage = await _damageService.GetDamage(firearmId, bossId, strength, skill,
+                var damage = await _damageService.GetFirearmDamage(firearmId, bossId, strength, skill,
                     bloodtinge, arcane, weaponUpgradeLevel);
 
                 return Ok(new { Damage = damage });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error: {ex.Message}");
+            }
+        }
+
+        [HttpGet("TricksterWeapon/{tricksterWeaponId}/Boss/{bossId}")]
+        public async Task<IActionResult> GetTricksterWeaponAttacksDamage(int tricksterWeaponId, int bossId, [FromQuery] int strength, [FromQuery] int skill,
+            [FromQuery] int bloodtinge, [FromQuery] int arcane, [FromQuery] int weaponUpgradeLevel)
+        {
+            try
+            {
+                var attacksDamageList = await _damageService.GetTricksterWeaponAttacksDamage(tricksterWeaponId, bossId, strength, skill,
+                    bloodtinge, arcane, weaponUpgradeLevel);
+
+                return Ok(attacksDamageList);
             }
             catch (Exception ex)
             {
