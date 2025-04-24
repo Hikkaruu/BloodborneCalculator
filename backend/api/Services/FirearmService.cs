@@ -141,47 +141,52 @@ namespace api.Services
             {
                 double strengthScaling = _weaponCalculationHelper.getScaling(scaling.StrengthScaling, scaling.StrengthStep, weaponUpgradeLevel);
                 double skillScaling = _weaponCalculationHelper.getScaling(scaling.SkillScaling, scaling.SkillStep, weaponUpgradeLevel);
+                double firearmAttack = firearm.PhysicalAttack + (firearm.PhysicalAttack / 10) * weaponUpgradeLevel;
 
-                physicalAttackRating = (int)Math.Round(
-                    firearm.PhysicalAttack
-                    + (firearm.PhysicalAttack * _weaponCalculationHelper.getSaturation(strength) * strengthScaling)
-                    + (firearm.PhysicalAttack * _weaponCalculationHelper.getSaturation(skill) * skillScaling));
+                physicalAttackRating = (int)(
+                    firearmAttack
+                    + (firearmAttack * _weaponCalculationHelper.getSaturation(strength) * strengthScaling)
+                    + (firearmAttack * _weaponCalculationHelper.getSaturation(skill) * skillScaling));
             }
 
             if (firearm.BloodAttack > 0)
             {
                 double bloodtingeScaling = _weaponCalculationHelper.getScaling(scaling.BloodtingeScaling, scaling.BloodtingeStep, weaponUpgradeLevel);
+                double firearmAttack = firearm.BloodAttack + (firearm.BloodAttack / 10) * weaponUpgradeLevel;
 
-                bloodAttackRating = (int)Math.Round(
-                    firearm.BloodAttack
-                    + (firearm.BloodAttack * _weaponCalculationHelper.getSaturation(bloodtinge) * bloodtingeScaling));
+                bloodAttackRating = (int)(
+                    firearmAttack
+                    + (firearmAttack * _weaponCalculationHelper.getSaturation(bloodtinge) * bloodtingeScaling));
             }
 
             if (firearm.ArcaneAttack > 0)
             {
                 double arcaneScaling = _weaponCalculationHelper.getScaling(scaling.ArcaneScaling, scaling.ArcaneStep, weaponUpgradeLevel);
-                
-                arcaneAttackRating = (int)Math.Round(
-                    firearm.ArcaneAttack
-                    + (firearm.ArcaneAttack * _weaponCalculationHelper.getSaturation(arcane) * arcaneScaling));
+                double firearmAttack = firearm.ArcaneAttack + (firearm.ArcaneAttack / 10) * weaponUpgradeLevel;
+
+                arcaneAttackRating = (int)(
+                    firearmAttack
+                    + (firearmAttack * _weaponCalculationHelper.getSaturation(arcane) * arcaneScaling));
             }
 
             if (firearm.FireAttack > 0)
             {
                 double arcaneScaling = _weaponCalculationHelper.getScaling(scaling.ArcaneScaling, scaling.ArcaneStep, weaponUpgradeLevel);
+                double firearmAttack = firearm.FireAttack + (firearm.FireAttack / 10) * weaponUpgradeLevel;
 
-                fireAttackRating = (int)Math.Round(
-                    firearm.FireAttack
-                    + (firearm.FireAttack * _weaponCalculationHelper.getSaturation(arcane) * arcaneScaling));
+                fireAttackRating = (int)(
+                    firearmAttack
+                    + (firearmAttack * _weaponCalculationHelper.getSaturation(arcane) * arcaneScaling));
             }
 
             if (firearm.BoltAttack > 0)
             {
                 double arcaneScaling = _weaponCalculationHelper.getScaling(scaling.ArcaneScaling, scaling.ArcaneStep, weaponUpgradeLevel);
+                double firearmAttack = firearm.BoltAttack + (firearm.BoltAttack / 10) * weaponUpgradeLevel;
 
-                boltAttackRating = (int)Math.Round(
-                    firearm.BoltAttack
-                    + (firearm.BoltAttack * _weaponCalculationHelper.getSaturation(arcane) * arcaneScaling));
+                boltAttackRating = (int)(
+                    firearmAttack
+                    + (firearmAttack * _weaponCalculationHelper.getSaturation(arcane) * arcaneScaling));
             }
             
             int attackRating = physicalAttackRating + bloodAttackRating + arcaneAttackRating + fireAttackRating + boltAttackRating;
