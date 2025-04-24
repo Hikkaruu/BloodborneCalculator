@@ -178,7 +178,7 @@ namespace api.Services
                     firearmAttack
                     + (firearmAttack * _weaponCalculationHelper.getSaturation(arcane) * arcaneScaling));
             }
-
+               
             if (firearm.BoltAttack > 0)
             {
                 double arcaneScaling = _weaponCalculationHelper.getScaling(scaling.ArcaneScaling, scaling.ArcaneStep, weaponUpgradeLevel);
