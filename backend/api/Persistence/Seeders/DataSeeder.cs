@@ -1327,7 +1327,7 @@ public class DataSeeder
             new TricksterWeapon {
                 Id = 26,
                 Name = "Whirligig Saw",
-                PhysicalAttack = 190,
+                PhysicalAttack = 95,
                 BloodAttack = 0,
                 ArcaneAttack = 0,
                 FireAttack = 0,
@@ -1337,7 +1337,7 @@ public class DataSeeder
                 ImprintsNormal = ImprintType.Imprint223,
                 ImprintsUncanny = ImprintType.Imprint224,
                 ImprintsLost = ImprintType.Imprint234,
-                Rally = 120,
+                Rally = 60,
                 StrengthRequirement = 18,
                 SkillRequirement = 12,
                 BloodtingeRequirement = 0,

@@ -150,6 +150,9 @@ namespace api.Services
                 double skillScaling = _weaponCalculationHelper.getScaling(scaling.SkillScaling, scaling.SkillStep, weaponUpgradeLevel);
                 double tricksterWeaponAttack = (weaponUpgradeLevel == 10) ? tricksterWeapon.MaxUpgradeAttack
                     : tricksterWeapon.PhysicalAttack + (tricksterWeapon.PhysicalAttack/10) * weaponUpgradeLevel;
+
+                Console.WriteLine($"tricksterWeaponAttack: {tricksterWeaponAttack}");
+                Console.WriteLine($"tricksterWeapon.PhysicalAttack: {tricksterWeapon.PhysicalAttack}");
                 
                 physicalAttackRating = (int)(
                     tricksterWeaponAttack
