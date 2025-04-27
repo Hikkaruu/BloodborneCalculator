@@ -17,6 +17,8 @@ namespace api.Configuration
             services.AddScoped<IFirearmService, FirearmService>();
             services.AddScoped<ITricksterWeaponService, TricksterWeaponService>();
             services.AddScoped<IDamageService, DamageService>();
+            services.AddScoped<IOriginService, OriginService>();
+            services.AddScoped<IEchoesPerLevelService, EchoesPerLevelService>();
 
             services.AddAutoMapper(typeof(MappingProfile).Assembly);
 

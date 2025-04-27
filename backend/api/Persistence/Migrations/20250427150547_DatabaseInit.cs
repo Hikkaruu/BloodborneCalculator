@@ -43,6 +43,42 @@ namespace api.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "echoes_per_level",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    level = table.Column<int>(type: "integer", nullable: false),
+                    required_blood_echoes = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_echoes_per_level", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "origins",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    name = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
+                    level = table.Column<int>(type: "integer", nullable: false),
+                    blood_echoes = table.Column<int>(type: "integer", nullable: false),
+                    discovery = table.Column<int>(type: "integer", nullable: false),
+                    vitality = table.Column<int>(type: "integer", nullable: false),
+                    endurance = table.Column<int>(type: "integer", nullable: false),
+                    strength = table.Column<int>(type: "integer", nullable: false),
+                    skill = table.Column<int>(type: "integer", nullable: false),
+                    bloodtinge = table.Column<int>(type: "integer", nullable: false),
+                    arcane = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_origins", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "scalings",
                 columns: table => new
                 {
@@ -186,7 +222,13 @@ namespace api.Persistence.Migrations
                 name: "bosses");
 
             migrationBuilder.DropTable(
+                name: "echoes_per_level");
+
+            migrationBuilder.DropTable(
                 name: "firearms");
+
+            migrationBuilder.DropTable(
+                name: "origins");
 
             migrationBuilder.DropTable(
                 name: "trickster_weapons");

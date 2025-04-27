@@ -5,6 +5,8 @@ using api.Models.DTOs.Scaling;
 using api.Models.DTOs.Attack;
 using api.Models.DTOs.Firearm;
 using api.Models.DTOs.TricksterWeapon;
+using api.Models.DTOs.Origin;
+using api.Models.DTOs.EchoesPerLevel;
 
 namespace api.Mapping
 {
@@ -69,6 +71,27 @@ namespace api.Mapping
             CreateMap<CreateTricksterWeaponDto, TricksterWeapon>();
 
             CreateMap<UpdateTricksterWeaponDto, TricksterWeapon>()
+                .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+
+            // Origin Mapping
+            CreateMap<Origin, OriginDto>()
+                .ReverseMap();
+
+            CreateMap<CreateOriginDto, Origin>();
+
+            CreateMap<UpdateOriginDto, Origin>()
+                .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+
+            // Echoes per level Mapping
+            CreateMap<EchoesPerLevel, EchoesPerLevelDto>()
+                .ReverseMap();
+
+            CreateMap<EchoesPerLevel, RequiredEchoesPerLevelDto>()
+                .ReverseMap();
+
+            CreateMap<CreateEchoesPerLevelDto, EchoesPerLevel>();
+
+            CreateMap<UpdateEchoesPerLevelDto, EchoesPerLevel>()
                 .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
         }
     }

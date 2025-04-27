@@ -32,6 +32,12 @@ public class DataSeeder
 
             if (!_context.Attacks.Any())
                 await SeedAttacks();
+
+            if (!_context.Origins.Any())
+                await SeedOrigins();
+
+            if (!_context.EchoesPerLevels.Any())
+                await SeedEchoesPerLevel();
         }
         catch (Exception ex)
         {
@@ -13610,4 +13616,3920 @@ public class DataSeeder
         await _context.SaveChangesAsync();
     }
 
+    private async Task SeedEchoesPerLevel()
+    {
+        var echoesPerLevel = new List<EchoesPerLevel>
+        {
+            new EchoesPerLevel
+            {
+                Id = 1,
+                Level = 5,
+                RequiredBloodEchoes = 724
+            },
+
+            new EchoesPerLevel
+            {
+                Id = 2,
+                Level = 6,
+                RequiredBloodEchoes = 741
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 3,
+                Level = 7,
+                RequiredBloodEchoes = 758
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 4,
+                Level = 8,
+                RequiredBloodEchoes = 775
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 5,
+                Level = 9,
+                RequiredBloodEchoes = 793
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 6,
+                Level = 10,
+                RequiredBloodEchoes = 811
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 7,
+                Level = 11,
+                RequiredBloodEchoes = 829
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 8,
+                Level = 12,
+                RequiredBloodEchoes = 847
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 9,
+                Level = 13,
+                RequiredBloodEchoes = 1039
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 10,
+                Level = 14,
+                RequiredBloodEchoes = 1238
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 11,
+                Level = 15,
+                RequiredBloodEchoes = 1445
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 12,
+                Level = 16,
+                RequiredBloodEchoes = 1660
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 13,
+                Level = 17,
+                RequiredBloodEchoes = 1883
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 14,
+                Level = 18,
+                RequiredBloodEchoes = 2114
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 15,
+                Level = 19,
+                RequiredBloodEchoes = 2353
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 16,
+                Level = 20,
+                RequiredBloodEchoes = 2601
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 17,
+                Level = 21,
+                RequiredBloodEchoes = 2857
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 18,
+                Level = 22,
+                RequiredBloodEchoes = 3122
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 19,
+                Level = 23,
+                RequiredBloodEchoes = 3396
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 20,
+                Level = 24,
+                RequiredBloodEchoes = 3678
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 21,
+                Level = 25,
+                RequiredBloodEchoes = 3970
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 22,
+                Level = 26,
+                RequiredBloodEchoes = 4271
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 23,
+                Level = 27,
+                RequiredBloodEchoes = 4581
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 24,
+                Level = 28,
+                RequiredBloodEchoes = 4900
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 25,
+                Level = 29,
+                RequiredBloodEchoes = 5229
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 26,
+                Level = 30,
+                RequiredBloodEchoes = 5567
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 27,
+                Level = 31,
+                RequiredBloodEchoes = 5915
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 28,
+                Level = 32,
+                RequiredBloodEchoes = 6273
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 29,
+                Level = 33,
+                RequiredBloodEchoes = 6641
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 30,
+                Level = 34,
+                RequiredBloodEchoes = 7019
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 31,
+                Level = 35,
+                RequiredBloodEchoes = 7407
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 32,
+                Level = 36,
+                RequiredBloodEchoes = 7805
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 33,
+                Level = 37,
+                RequiredBloodEchoes = 8214
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 34,
+                Level = 38,
+                RequiredBloodEchoes = 8634
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 35,
+                Level = 39,
+                RequiredBloodEchoes = 9064
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 36,
+                Level = 40,
+                RequiredBloodEchoes = 9505
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 37,
+                Level = 41,
+                RequiredBloodEchoes = 9957
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 38,
+                Level = 42,
+                RequiredBloodEchoes = 10420
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 39,
+                Level = 43,
+                RequiredBloodEchoes = 10894
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 40,
+                Level = 44,
+                RequiredBloodEchoes = 11379
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 41,
+                Level = 45,
+                RequiredBloodEchoes = 11876
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 42,
+                Level = 46,
+                RequiredBloodEchoes = 12384
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 43,
+                Level = 47,
+                RequiredBloodEchoes = 12904
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 44,
+                Level = 48,
+                RequiredBloodEchoes = 13436
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 45,
+                Level = 49,
+                RequiredBloodEchoes = 13979
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 46,
+                Level = 50,
+                RequiredBloodEchoes = 14535
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 47,
+                Level = 51,
+                RequiredBloodEchoes = 15103
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 48,
+                Level = 52,
+                RequiredBloodEchoes = 15683
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 49,
+                Level = 53,
+                RequiredBloodEchoes = 16275
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 50,
+                Level = 54,
+                RequiredBloodEchoes = 16880
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 51,
+                Level = 55,
+                RequiredBloodEchoes = 17497
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 52,
+                Level = 56,
+                RequiredBloodEchoes = 18127
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 53,
+                Level = 57,
+                RequiredBloodEchoes = 18770
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 54,
+                Level = 58,
+                RequiredBloodEchoes = 19426
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 55,
+                Level = 59,
+                RequiredBloodEchoes = 20095
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 56,
+                Level = 60,
+                RequiredBloodEchoes = 20777
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 57,
+                Level = 61,
+                RequiredBloodEchoes = 21472
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 58,
+                Level = 62,
+                RequiredBloodEchoes = 22181
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 59,
+                Level = 63,
+                RequiredBloodEchoes = 22904
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 60,
+                Level = 64,
+                RequiredBloodEchoes = 23640
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 61,
+                Level = 65,
+                RequiredBloodEchoes = 24390
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 62,
+                Level = 66,
+                RequiredBloodEchoes = 25154
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 63,
+                Level = 67,
+                RequiredBloodEchoes = 25932
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 64,
+                Level = 68,
+                RequiredBloodEchoes = 26724
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 65,
+                Level = 69,
+                RequiredBloodEchoes = 27530
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 66,
+                Level = 70,
+                RequiredBloodEchoes = 28351
+            },
+
+            new EchoesPerLevel
+            {
+                Id = 67,
+                Level = 71,
+                RequiredBloodEchoes = 29186
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 68,
+                Level = 72,
+                RequiredBloodEchoes = 30036
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 69,
+                Level = 73,
+                RequiredBloodEchoes = 30901
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 70,
+                Level = 74,
+                RequiredBloodEchoes = 31780
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 71,
+                Level = 75,
+                RequiredBloodEchoes = 32675
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 72,
+                Level = 76,
+                RequiredBloodEchoes = 33585
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 73,
+                Level = 77,
+                RequiredBloodEchoes = 34510
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 74,
+                Level = 78,
+                RequiredBloodEchoes = 35450
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 75,
+                Level = 79,
+                RequiredBloodEchoes = 36406
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 76,
+                Level = 80,
+                RequiredBloodEchoes = 37377
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 77,
+                Level = 81,
+                RequiredBloodEchoes = 38364
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 78,
+                Level = 82,
+                RequiredBloodEchoes = 39367
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 79,
+                Level = 83,
+                RequiredBloodEchoes = 40386
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 80,
+                Level = 84,
+                RequiredBloodEchoes = 41421
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 81,
+                Level = 85,
+                RequiredBloodEchoes = 42472
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 82,
+                Level = 86,
+                RequiredBloodEchoes = 43539
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 83,
+                Level = 87,
+                RequiredBloodEchoes = 44623
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 84,
+                Level = 88,
+                RequiredBloodEchoes = 45724
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 85,
+                Level = 89,
+                RequiredBloodEchoes = 46841
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 86,
+                Level = 90,
+                RequiredBloodEchoes = 47975
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 87,
+                Level = 91,
+                RequiredBloodEchoes = 49126
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 88,
+                Level = 92,
+                RequiredBloodEchoes = 50294
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 89,
+                Level = 93,
+                RequiredBloodEchoes = 51479
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 90,
+                Level = 94,
+                RequiredBloodEchoes = 52681
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 91,
+                Level = 95,
+                RequiredBloodEchoes = 53901
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 92,
+                Level = 96,
+                RequiredBloodEchoes = 55138
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 93,
+                Level = 97,
+                RequiredBloodEchoes = 56393
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 94,
+                Level = 98,
+                RequiredBloodEchoes = 57666
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 95,
+                Level = 99,
+                RequiredBloodEchoes = 58956
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 96,
+                Level = 100,
+                RequiredBloodEchoes = 60265
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 97,
+                Level = 101,
+                RequiredBloodEchoes = 61592
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 98,
+                Level = 102,
+                RequiredBloodEchoes = 62937
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 99,
+                Level = 103,
+                RequiredBloodEchoes = 64300
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 100,
+                Level = 104,
+                RequiredBloodEchoes = 65682
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 101,
+                Level = 105,
+                RequiredBloodEchoes = 67082
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 102,
+                Level = 106,
+                RequiredBloodEchoes = 68501
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 103,
+                Level = 107,
+                RequiredBloodEchoes = 69939
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 104,
+                Level = 108,
+                RequiredBloodEchoes = 71396
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 105,
+                Level = 109,
+                RequiredBloodEchoes = 72872
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 106,
+                Level = 110,
+                RequiredBloodEchoes = 74367
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 107,
+                Level = 111,
+                RequiredBloodEchoes = 75881
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 108,
+                Level = 112,
+                RequiredBloodEchoes = 77415
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 109,
+                Level = 113,
+                RequiredBloodEchoes = 78969
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 110,
+                Level = 114,
+                RequiredBloodEchoes = 80542
+            },
+
+            new EchoesPerLevel
+            {
+                Id = 111,
+                Level = 115,
+                RequiredBloodEchoes = 82135
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 112,
+                Level = 116,
+                RequiredBloodEchoes = 83748
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 113,
+                Level = 117,
+                RequiredBloodEchoes = 85381
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 114,
+                Level = 118,
+                RequiredBloodEchoes = 87034
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 115,
+                Level = 119,
+                RequiredBloodEchoes = 88707
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 116,
+                Level = 120,
+                RequiredBloodEchoes = 90401
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 117,
+                Level = 121,
+                RequiredBloodEchoes = 92115
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 118,
+                Level = 122,
+                RequiredBloodEchoes = 93850
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 119,
+                Level = 123,
+                RequiredBloodEchoes = 95606
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 120,
+                Level = 124,
+                RequiredBloodEchoes = 97382
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 121,
+                Level = 125,
+                RequiredBloodEchoes = 99180
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 122,
+                Level = 126,
+                RequiredBloodEchoes = 100999
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 123,
+                Level = 127,
+                RequiredBloodEchoes = 102839
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 124,
+                Level = 128,
+                RequiredBloodEchoes = 104700
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 125,
+                Level = 129,
+                RequiredBloodEchoes = 106583
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 126,
+                Level = 130,
+                RequiredBloodEchoes = 108487
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 127,
+                Level = 131,
+                RequiredBloodEchoes = 110413
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 128,
+                Level = 132,
+                RequiredBloodEchoes = 112361
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 129,
+                Level = 133,
+                RequiredBloodEchoes = 114331
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 130,
+                Level = 134,
+                RequiredBloodEchoes = 116323
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 131,
+                Level = 135,
+                RequiredBloodEchoes = 118337
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 132,
+                Level = 136,
+                RequiredBloodEchoes = 120373
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 133,
+                Level = 137,
+                RequiredBloodEchoes = 122432
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 134,
+                Level = 138,
+                RequiredBloodEchoes = 124514
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 135,
+                Level = 139,
+                RequiredBloodEchoes = 126618
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 136,
+                Level = 140,
+                RequiredBloodEchoes = 128745
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 137,
+                Level = 141,
+                RequiredBloodEchoes = 130895
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 138,
+                Level = 142,
+                RequiredBloodEchoes = 133068
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 139,
+                Level = 143,
+                RequiredBloodEchoes = 135264
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 140,
+                Level = 144,
+                RequiredBloodEchoes = 137483
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 141,
+                Level = 145,
+                RequiredBloodEchoes = 139726
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 142,
+                Level = 146,
+                RequiredBloodEchoes = 141992
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 143,
+                Level = 147,
+                RequiredBloodEchoes = 144282
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 144,
+                Level = 148,
+                RequiredBloodEchoes = 146596
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 145,
+                Level = 149,
+                RequiredBloodEchoes = 148933
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 146,
+                Level = 150,
+                RequiredBloodEchoes = 151295
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 147,
+                Level = 151,
+                RequiredBloodEchoes = 153681
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 148,
+                Level = 152,
+                RequiredBloodEchoes = 156091
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 149,
+                Level = 153,
+                RequiredBloodEchoes = 158525
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 150,
+                Level = 154,
+                RequiredBloodEchoes = 160984
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 151,
+                Level = 155,
+                RequiredBloodEchoes = 163467
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 152,
+                Level = 156,
+                RequiredBloodEchoes = 165975
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 153,
+                Level = 157,
+                RequiredBloodEchoes = 168508
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 154,
+                Level = 158,
+                RequiredBloodEchoes = 171066
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 155,
+                Level = 159,
+                RequiredBloodEchoes = 173649
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 156,
+                Level = 160,
+                RequiredBloodEchoes = 176257
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 157,
+                Level = 161,
+                RequiredBloodEchoes = 178890
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 158,
+                Level = 162,
+                RequiredBloodEchoes = 181549
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 159,
+                Level = 163,
+                RequiredBloodEchoes = 184234
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 160,
+                Level = 164,
+                RequiredBloodEchoes = 186944
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 161,
+                Level = 165,
+                RequiredBloodEchoes = 189680
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 162,
+                Level = 166,
+                RequiredBloodEchoes = 192442
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 163,
+                Level = 167,
+                RequiredBloodEchoes = 195230
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 164,
+                Level = 168,
+                RequiredBloodEchoes = 198044
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 165,
+                Level = 169,
+                RequiredBloodEchoes = 200884
+            },
+
+            new EchoesPerLevel
+            {
+                Id = 166,
+                Level = 170,
+                RequiredBloodEchoes = 203751
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 167,
+                Level = 171,
+                RequiredBloodEchoes = 206644
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 168,
+                Level = 172,
+                RequiredBloodEchoes = 209564
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 169,
+                Level = 173,
+                RequiredBloodEchoes = 212511
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 170,
+                Level = 174,
+                RequiredBloodEchoes = 215484
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 171,
+                Level = 175,
+                RequiredBloodEchoes = 218485
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 172,
+                Level = 176,
+                RequiredBloodEchoes = 221513
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 173,
+                Level = 177,
+                RequiredBloodEchoes = 224568
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 174,
+                Level = 178,
+                RequiredBloodEchoes = 227650
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 175,
+                Level = 179,
+                RequiredBloodEchoes = 230760
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 176,
+                Level = 180,
+                RequiredBloodEchoes = 233897
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 177,
+                Level = 181,
+                RequiredBloodEchoes = 237062
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 178,
+                Level = 182,
+                RequiredBloodEchoes = 240255
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 179,
+                Level = 183,
+                RequiredBloodEchoes = 243476
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 180,
+                Level = 184,
+                RequiredBloodEchoes = 246725
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 181,
+                Level = 185,
+                RequiredBloodEchoes = 250002
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 182,
+                Level = 186,
+                RequiredBloodEchoes = 253307
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 183,
+                Level = 187,
+                RequiredBloodEchoes = 256641
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 184,
+                Level = 188,
+                RequiredBloodEchoes = 260004
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 185,
+                Level = 189,
+                RequiredBloodEchoes = 263395
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 186,
+                Level = 190,
+                RequiredBloodEchoes = 266815
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 187,
+                Level = 191,
+                RequiredBloodEchoes = 270264
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 188,
+                Level = 192,
+                RequiredBloodEchoes = 273742
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 189,
+                Level = 193,
+                RequiredBloodEchoes = 277249
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 190,
+                Level = 194,
+                RequiredBloodEchoes = 280785
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 191,
+                Level = 195,
+                RequiredBloodEchoes = 284351
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 192,
+                Level = 196,
+                RequiredBloodEchoes = 287946
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 193,
+                Level = 197,
+                RequiredBloodEchoes = 291571
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 194,
+                Level = 198,
+                RequiredBloodEchoes = 295226
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 195,
+                Level = 199,
+                RequiredBloodEchoes = 298910
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 196,
+                Level = 200,
+                RequiredBloodEchoes = 302625
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 197,
+                Level = 201,
+                RequiredBloodEchoes = 306370
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 198,
+                Level = 202,
+                RequiredBloodEchoes = 310145
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 199,
+                Level = 203,
+                RequiredBloodEchoes = 313950
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 200,
+                Level = 204,
+                RequiredBloodEchoes = 317786
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 201,
+                Level = 205,
+                RequiredBloodEchoes = 321652
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 202,
+                Level = 206,
+                RequiredBloodEchoes = 325549
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 203,
+                Level = 207,
+                RequiredBloodEchoes = 329477
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 204,
+                Level = 208,
+                RequiredBloodEchoes = 333436
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 205,
+                Level = 209,
+                RequiredBloodEchoes = 337426
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 206,
+                Level = 210,
+                RequiredBloodEchoes = 341447
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 207,
+                Level = 211,
+                RequiredBloodEchoes = 345499
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 208,
+                Level = 212,
+                RequiredBloodEchoes = 349583
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 209,
+                Level = 213,
+                RequiredBloodEchoes = 353699
+            },
+
+            new EchoesPerLevel
+            {
+                Id = 210,
+                Level = 214,
+                RequiredBloodEchoes = 357846
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 211,
+                Level = 215,
+                RequiredBloodEchoes = 362025
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 212,
+                Level = 216,
+                RequiredBloodEchoes = 366236
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 213,
+                Level = 217,
+                RequiredBloodEchoes = 370479
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 214,
+                Level = 218,
+                RequiredBloodEchoes = 374754
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 215,
+                Level = 219,
+                RequiredBloodEchoes = 379061
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 216,
+                Level = 220,
+                RequiredBloodEchoes = 383401
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 217,
+                Level = 221,
+                RequiredBloodEchoes = 387773
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 218,
+                Level = 222,
+                RequiredBloodEchoes = 392178
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 219,
+                Level = 223,
+                RequiredBloodEchoes = 396616
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 220,
+                Level = 224,
+                RequiredBloodEchoes = 401086
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 221,
+                Level = 225,
+                RequiredBloodEchoes = 405590
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 222,
+                Level = 226,
+                RequiredBloodEchoes = 410127
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 223,
+                Level = 227,
+                RequiredBloodEchoes = 414697
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 224,
+                Level = 228,
+                RequiredBloodEchoes = 419300
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 225,
+                Level = 229,
+                RequiredBloodEchoes = 423937
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 226,
+                Level = 230,
+                RequiredBloodEchoes = 428607
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 227,
+                Level = 231,
+                RequiredBloodEchoes = 433311
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 228,
+                Level = 232,
+                RequiredBloodEchoes = 438049
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 229,
+                Level = 233,
+                RequiredBloodEchoes = 442821
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 230,
+                Level = 234,
+                RequiredBloodEchoes = 447627
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 231,
+                Level = 236,
+                RequiredBloodEchoes = 457341
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 232,
+                Level = 237,
+                RequiredBloodEchoes = 462250
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 233,
+                Level = 238,
+                RequiredBloodEchoes = 467194
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 234,
+                Level = 239,
+                RequiredBloodEchoes = 472172
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 235,
+                Level = 240,
+                RequiredBloodEchoes = 477185
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 236,
+                Level = 241,
+                RequiredBloodEchoes = 482233
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 237,
+                Level = 242,
+                RequiredBloodEchoes = 487316
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 238,
+                Level = 243,
+                RequiredBloodEchoes = 492434
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 239,
+                Level = 244,
+                RequiredBloodEchoes = 497587
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 240,
+                Level = 245,
+                RequiredBloodEchoes = 502776
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 241,
+                Level = 246,
+                RequiredBloodEchoes = 508000
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 242,
+                Level = 247,
+                RequiredBloodEchoes = 513260
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 243,
+                Level = 248,
+                RequiredBloodEchoes = 518556
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 244,
+                Level = 249,
+                RequiredBloodEchoes = 523887
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 245,
+                Level = 250,
+                RequiredBloodEchoes = 529255
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 246,
+                Level = 251,
+                RequiredBloodEchoes = 534659
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 247,
+                Level = 252,
+                RequiredBloodEchoes = 540099
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 248,
+                Level = 253,
+                RequiredBloodEchoes = 545575
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 249,
+                Level = 254,
+                RequiredBloodEchoes = 551088
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 250,
+                Level = 255,
+                RequiredBloodEchoes = 556637
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 251,
+                Level = 256,
+                RequiredBloodEchoes = 562223
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 252,
+                Level = 257,
+                RequiredBloodEchoes = 567846
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 253,
+                Level = 258,
+                RequiredBloodEchoes = 573506
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 254,
+                Level = 259,
+                RequiredBloodEchoes = 579203
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 255,
+                Level = 260,
+                RequiredBloodEchoes = 584937
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 256,
+                Level = 261,
+                RequiredBloodEchoes = 590709
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 257,
+                Level = 262,
+                RequiredBloodEchoes = 596517
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 258,
+                Level = 263,
+                RequiredBloodEchoes = 602364
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 259,
+                Level = 264,
+                RequiredBloodEchoes = 608248
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 260,
+                Level = 265,
+                RequiredBloodEchoes = 614170
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 261,
+                Level = 266,
+                RequiredBloodEchoes = 620130
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 262,
+                Level = 267,
+                RequiredBloodEchoes = 626128
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 263,
+                Level = 268,
+                RequiredBloodEchoes = 632164
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 264,
+                Level = 269,
+                RequiredBloodEchoes = 638238
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 265,
+                Level = 270,
+                RequiredBloodEchoes = 644351
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 266,
+                Level = 271,
+                RequiredBloodEchoes = 650502
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 267,
+                Level = 272,
+                RequiredBloodEchoes = 656692
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 268,
+                Level = 273,
+                RequiredBloodEchoes = 662921
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 269,
+                Level = 274,
+                RequiredBloodEchoes = 669188
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 270,
+                Level = 275,
+                RequiredBloodEchoes = 675495
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 271,
+                Level = 276,
+                RequiredBloodEchoes = 681841
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 272,
+                Level = 277,
+                RequiredBloodEchoes = 688226
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 273,
+                Level = 278,
+                RequiredBloodEchoes = 694650
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 274,
+                Level = 279,
+                RequiredBloodEchoes = 701114
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 275,
+                Level = 280,
+                RequiredBloodEchoes = 707617
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 276,
+                Level = 281,
+                RequiredBloodEchoes = 714160
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 277,
+                Level = 282,
+                RequiredBloodEchoes = 720743
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 278,
+                Level = 283,
+                RequiredBloodEchoes = 727366
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 279,
+                Level = 284,
+                RequiredBloodEchoes = 734029
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 280,
+                Level = 285,
+                RequiredBloodEchoes = 740732
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 281,
+                Level = 286,
+                RequiredBloodEchoes = 747476
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 282,
+                Level = 287,
+                RequiredBloodEchoes = 754259
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 283,
+                Level = 288,
+                RequiredBloodEchoes = 761084
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 284,
+                Level = 289,
+                RequiredBloodEchoes = 767949
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 285,
+                Level = 290,
+                RequiredBloodEchoes = 774855
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 286,
+                Level = 291,
+                RequiredBloodEchoes = 781802
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 287,
+                Level = 292,
+                RequiredBloodEchoes = 788790
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 288,
+                Level = 293,
+                RequiredBloodEchoes = 795819
+            },
+
+            new EchoesPerLevel
+            {
+                Id = 289,
+                Level = 294,
+                RequiredBloodEchoes = 802889
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 290,
+                Level = 295,
+                RequiredBloodEchoes = 810001
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 291,
+                Level = 296,
+                RequiredBloodEchoes = 817154
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 292,
+                Level = 297,
+                RequiredBloodEchoes = 824349
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 293,
+                Level = 298,
+                RequiredBloodEchoes = 831586
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 294,
+                Level = 299,
+                RequiredBloodEchoes = 838864
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 295,
+                Level = 300,
+                RequiredBloodEchoes = 846185
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 296,
+                Level = 301,
+                RequiredBloodEchoes = 853548
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 297,
+                Level = 302,
+                RequiredBloodEchoes = 860953
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 298,
+                Level = 303,
+                RequiredBloodEchoes = 868400
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 299,
+                Level = 304,
+                RequiredBloodEchoes = 875890
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 300,
+                Level = 305,
+                RequiredBloodEchoes = 883422
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 301,
+                Level = 306,
+                RequiredBloodEchoes = 890997
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 302,
+                Level = 307,
+                RequiredBloodEchoes = 898615
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 303,
+                Level = 308,
+                RequiredBloodEchoes = 906276
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 304,
+                Level = 309,
+                RequiredBloodEchoes = 913980
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 305,
+                Level = 310,
+                RequiredBloodEchoes = 921727
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 306,
+                Level = 311,
+                RequiredBloodEchoes = 929517
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 307,
+                Level = 312,
+                RequiredBloodEchoes = 937351
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 308,
+                Level = 313,
+                RequiredBloodEchoes = 945229
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 309,
+                Level = 314,
+                RequiredBloodEchoes = 953150
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 310,
+                Level = 315,
+                RequiredBloodEchoes = 961115
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 311,
+                Level = 316,
+                RequiredBloodEchoes = 969124
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 312,
+                Level = 317,
+                RequiredBloodEchoes = 977177
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 313,
+                Level = 318,
+                RequiredBloodEchoes = 985274
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 314,
+                Level = 319,
+                RequiredBloodEchoes = 993415
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 315,
+                Level = 320,
+                RequiredBloodEchoes = 1001601
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 316,
+                Level = 321,
+                RequiredBloodEchoes = 1009831
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 317,
+                Level = 322,
+                RequiredBloodEchoes = 1018106
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 318,
+                Level = 323,
+                RequiredBloodEchoes = 1026426
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 319,
+                Level = 324,
+                RequiredBloodEchoes = 1034790
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 320,
+                Level = 325,
+                RequiredBloodEchoes = 1043200
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 321,
+                Level = 326,
+                RequiredBloodEchoes = 1051655
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 322,
+                Level = 327,
+                RequiredBloodEchoes = 1060155
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 323,
+                Level = 328,
+                RequiredBloodEchoes = 1068700
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 324,
+                Level = 329,
+                RequiredBloodEchoes = 1077291
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 325,
+                Level = 330,
+                RequiredBloodEchoes = 1085927
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 326,
+                Level = 331,
+                RequiredBloodEchoes = 1094609
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 327,
+                Level = 332,
+                RequiredBloodEchoes = 1103337
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 328,
+                Level = 333,
+                RequiredBloodEchoes = 1112111
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 329,
+                Level = 334,
+                RequiredBloodEchoes = 1120931
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 330,
+                Level = 335,
+                RequiredBloodEchoes = 1129797
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 331,
+                Level = 336,
+                RequiredBloodEchoes = 1138710
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 332,
+                Level = 337,
+                RequiredBloodEchoes = 1147668
+            },
+
+            new EchoesPerLevel
+            {
+                Id = 333,
+                Level = 338,
+                RequiredBloodEchoes = 1156674
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 334,
+                Level = 339,
+                RequiredBloodEchoes = 1165726
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 335,
+                Level = 340,
+                RequiredBloodEchoes = 1174825
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 336,
+                Level = 341,
+                RequiredBloodEchoes = 1183971
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 337,
+                Level = 342,
+                RequiredBloodEchoes = 1193164
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 338,
+                Level = 343,
+                RequiredBloodEchoes = 1202404
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 339,
+                Level = 344,
+                RequiredBloodEchoes = 1211691
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 340,
+                Level = 345,
+                RequiredBloodEchoes = 1221026
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 341,
+                Level = 346,
+                RequiredBloodEchoes = 1230408
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 342,
+                Level = 347,
+                RequiredBloodEchoes = 1239838
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 343,
+                Level = 348,
+                RequiredBloodEchoes = 1249316
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 344,
+                Level = 349,
+                RequiredBloodEchoes = 1258841
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 345,
+                Level = 350,
+                RequiredBloodEchoes = 1268415
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 346,
+                Level = 351,
+                RequiredBloodEchoes = 1278037
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 347,
+                Level = 352,
+                RequiredBloodEchoes = 1287707
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 348,
+                Level = 353,
+                RequiredBloodEchoes = 1297425
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 349,
+                Level = 354,
+                RequiredBloodEchoes = 1307192
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 350,
+                Level = 355,
+                RequiredBloodEchoes = 1317007
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 351,
+                Level = 356,
+                RequiredBloodEchoes = 1326871
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 352,
+                Level = 357,
+                RequiredBloodEchoes = 1336784
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 353,
+                Level = 358,
+                RequiredBloodEchoes = 1346746
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 354,
+                Level = 359,
+                RequiredBloodEchoes = 1356757
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 355,
+                Level = 360,
+                RequiredBloodEchoes = 1366817
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 356,
+                Level = 361,
+                RequiredBloodEchoes = 1376927
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 357,
+                Level = 362,
+                RequiredBloodEchoes = 1387085
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 358,
+                Level = 363,
+                RequiredBloodEchoes = 1397294
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 359,
+                Level = 364,
+                RequiredBloodEchoes = 1407552
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 360,
+                Level = 365,
+                RequiredBloodEchoes = 1417860
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 361,
+                Level = 366,
+                RequiredBloodEchoes = 1428218
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 362,
+                Level = 367,
+                RequiredBloodEchoes = 1438626
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 363,
+                Level = 368,
+                RequiredBloodEchoes = 1449084
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 364,
+                Level = 369,
+                RequiredBloodEchoes = 1459592
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 365,
+                Level = 370,
+                RequiredBloodEchoes = 1470151
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 366,
+                Level = 371,
+                RequiredBloodEchoes = 1480760
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 367,
+                Level = 372,
+                RequiredBloodEchoes = 1491420
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 368,
+                Level = 373,
+                RequiredBloodEchoes = 1502131
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 369,
+                Level = 374,
+                RequiredBloodEchoes = 1512892
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 370,
+                Level = 375,
+                RequiredBloodEchoes = 1523705
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 371,
+                Level = 376,
+                RequiredBloodEchoes = 1534569
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 372,
+                Level = 377,
+                RequiredBloodEchoes = 1545484
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 373,
+                Level = 378,
+                RequiredBloodEchoes = 1556450
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 374,
+                Level = 379,
+                RequiredBloodEchoes = 1567468
+            },
+
+            new EchoesPerLevel
+            {
+                Id = 375,
+                Level = 380,
+                RequiredBloodEchoes = 1578537
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 376,
+                Level = 381,
+                RequiredBloodEchoes = 1589658
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 377,
+                Level = 382,
+                RequiredBloodEchoes = 1600831
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 378,
+                Level = 383,
+                RequiredBloodEchoes = 1612056
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 379,
+                Level = 384,
+                RequiredBloodEchoes = 1623333
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 380,
+                Level = 385,
+                RequiredBloodEchoes = 1634662
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 381,
+                Level = 386,
+                RequiredBloodEchoes = 1646043
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 382,
+                Level = 387,
+                RequiredBloodEchoes = 1657477
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 383,
+                Level = 388,
+                RequiredBloodEchoes = 1668964
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 384,
+                Level = 389,
+                RequiredBloodEchoes = 1680503
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 385,
+                Level = 390,
+                RequiredBloodEchoes = 1692095
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 386,
+                Level = 391,
+                RequiredBloodEchoes = 1703740
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 387,
+                Level = 392,
+                RequiredBloodEchoes = 1715438
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 388,
+                Level = 393,
+                RequiredBloodEchoes = 1727189
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 389,
+                Level = 394,
+                RequiredBloodEchoes = 1738993
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 390,
+                Level = 395,
+                RequiredBloodEchoes = 1750851
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 391,
+                Level = 396,
+                RequiredBloodEchoes = 1762762
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 392,
+                Level = 397,
+                RequiredBloodEchoes = 1774727
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 393,
+                Level = 398,
+                RequiredBloodEchoes = 1786746
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 394,
+                Level = 399,
+                RequiredBloodEchoes = 1798818
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 395,
+                Level = 400,
+                RequiredBloodEchoes = 1810945
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 396,
+                Level = 401,
+                RequiredBloodEchoes = 1823126
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 397,
+                Level = 402,
+                RequiredBloodEchoes = 1835361
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 398,
+                Level = 403,
+                RequiredBloodEchoes = 1847650
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 399,
+                Level = 404,
+                RequiredBloodEchoes = 1859994
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 400,
+                Level = 405,
+                RequiredBloodEchoes = 1872392
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 401,
+                Level = 406,
+                RequiredBloodEchoes = 1884845
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 402,
+                Level = 407,
+                RequiredBloodEchoes = 1897353
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 403,
+                Level = 408,
+                RequiredBloodEchoes = 1909916
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 404,
+                Level = 409,
+                RequiredBloodEchoes = 1922534
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 405,
+                Level = 410,
+                RequiredBloodEchoes = 1935207
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 406,
+                Level = 411,
+                RequiredBloodEchoes = 1947935
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 407,
+                Level = 412,
+                RequiredBloodEchoes = 1960719
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 408,
+                Level = 413,
+                RequiredBloodEchoes = 1973559
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 409,
+                Level = 414,
+                RequiredBloodEchoes = 1986454
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 410,
+                Level = 415,
+                RequiredBloodEchoes = 1999405
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 411,
+                Level = 416,
+                RequiredBloodEchoes = 2012412
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 412,
+                Level = 417,
+                RequiredBloodEchoes = 2025475
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 413,
+                Level = 418,
+                RequiredBloodEchoes = 2038594
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 414,
+                Level = 419,
+                RequiredBloodEchoes = 2051769
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 415,
+                Level = 420,
+                RequiredBloodEchoes = 2065001
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 416,
+                Level = 421,
+                RequiredBloodEchoes = 2078289
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 417,
+                Level = 422,
+                RequiredBloodEchoes = 2091634
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 418,
+                Level = 423,
+                RequiredBloodEchoes = 2105036
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 419,
+                Level = 424,
+                RequiredBloodEchoes = 2118494
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 420,
+                Level = 425,
+                RequiredBloodEchoes = 2132010
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 421,
+                Level = 426,
+                RequiredBloodEchoes = 2145583
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 422,
+                Level = 427,
+                RequiredBloodEchoes = 2159213
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 423,
+                Level = 428,
+                RequiredBloodEchoes = 2172900
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 424,
+                Level = 429,
+                RequiredBloodEchoes = 2186645
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 425,
+                Level = 430,
+                RequiredBloodEchoes = 2200447
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 426,
+                Level = 431,
+                RequiredBloodEchoes = 2214307
+            },
+
+            new EchoesPerLevel
+            {
+                Id = 427,
+                Level = 432,
+                RequiredBloodEchoes = 2228225
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 428,
+                Level = 433,
+                RequiredBloodEchoes = 2242201
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 429,
+                Level = 434,
+                RequiredBloodEchoes = 2256235
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 430,
+                Level = 435,
+                RequiredBloodEchoes = 2270327
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 431,
+                Level = 436,
+                RequiredBloodEchoes = 2284477
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 432,
+                Level = 437,
+                RequiredBloodEchoes = 2298686
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 433,
+                Level = 438,
+                RequiredBloodEchoes = 2312954
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 434,
+                Level = 439,
+                RequiredBloodEchoes = 2327280
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 435,
+                Level = 440,
+                RequiredBloodEchoes = 2341665
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 436,
+                Level = 441,
+                RequiredBloodEchoes = 2356109
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 437,
+                Level = 442,
+                RequiredBloodEchoes = 2370612
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 438,
+                Level = 443,
+                RequiredBloodEchoes = 2385174
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 439,
+                Level = 444,
+                RequiredBloodEchoes = 2399795
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 440,
+                Level = 445,
+                RequiredBloodEchoes = 2414476
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 441,
+                Level = 446,
+                RequiredBloodEchoes = 2429216
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 442,
+                Level = 447,
+                RequiredBloodEchoes = 2444016
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 443,
+                Level = 448,
+                RequiredBloodEchoes = 2458876
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 444,
+                Level = 449,
+                RequiredBloodEchoes = 2473795
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 445,
+                Level = 450,
+                RequiredBloodEchoes = 2488775
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 446,
+                Level = 451,
+                RequiredBloodEchoes = 2503815
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 447,
+                Level = 452,
+                RequiredBloodEchoes = 2518915
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 448,
+                Level = 453,
+                RequiredBloodEchoes = 2534075
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 449,
+                Level = 454,
+                RequiredBloodEchoes = 2549296
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 450,
+                Level = 455,
+                RequiredBloodEchoes = 2564577
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 451,
+                Level = 456,
+                RequiredBloodEchoes = 2579919
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 452,
+                Level = 457,
+                RequiredBloodEchoes = 2595322
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 453,
+                Level = 458,
+                RequiredBloodEchoes = 2610786
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 454,
+                Level = 459,
+                RequiredBloodEchoes = 2626311
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 455,
+                Level = 460,
+                RequiredBloodEchoes = 2641897
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 456,
+                Level = 461,
+                RequiredBloodEchoes = 2657544
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 457,
+                Level = 462,
+                RequiredBloodEchoes = 2673253
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 458,
+                Level = 463,
+                RequiredBloodEchoes = 2689024
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 459,
+                Level = 464,
+                RequiredBloodEchoes = 2704856
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 460,
+                Level = 465,
+                RequiredBloodEchoes = 2720750
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 461,
+                Level = 466,
+                RequiredBloodEchoes = 2736706
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 462,
+                Level = 467,
+                RequiredBloodEchoes = 2752724
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 463,
+                Level = 468,
+                RequiredBloodEchoes = 2768804
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 464,
+                Level = 469,
+                RequiredBloodEchoes = 2784946
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 465,
+                Level = 470,
+                RequiredBloodEchoes = 2801151
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 466,
+                Level = 471,
+                RequiredBloodEchoes = 2817418
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 467,
+                Level = 472,
+                RequiredBloodEchoes = 2833748
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 468,
+                Level = 473,
+                RequiredBloodEchoes = 2850141
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 469,
+                Level = 474,
+                RequiredBloodEchoes = 2866596
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 470,
+                Level = 475,
+                RequiredBloodEchoes = 2883115
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 471,
+                Level = 476,
+                RequiredBloodEchoes = 2899697
+            },
+
+            new EchoesPerLevel
+            {
+                Id = 472,
+                Level = 477,
+                RequiredBloodEchoes = 2916342
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 473,
+                Level = 478,
+                RequiredBloodEchoes = 2933050
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 474,
+                Level = 479,
+                RequiredBloodEchoes = 2949822
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 475,
+                Level = 480,
+                RequiredBloodEchoes = 2966657
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 476,
+                Level = 481,
+                RequiredBloodEchoes = 2983556
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 477,
+                Level = 482,
+                RequiredBloodEchoes = 3000519
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 478,
+                Level = 483,
+                RequiredBloodEchoes = 3017546
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 479,
+                Level = 484,
+                RequiredBloodEchoes = 3034637
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 480,
+                Level = 485,
+                RequiredBloodEchoes = 3051792
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 481,
+                Level = 486,
+                RequiredBloodEchoes = 3069011
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 482,
+                Level = 487,
+                RequiredBloodEchoes = 3086295
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 483,
+                Level = 488,
+                RequiredBloodEchoes = 3103644
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 484,
+                Level = 489,
+                RequiredBloodEchoes = 3121057
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 485,
+                Level = 490,
+                RequiredBloodEchoes = 3138535
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 486,
+                Level = 491,
+                RequiredBloodEchoes = 3156078
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 487,
+                Level = 492,
+                RequiredBloodEchoes = 3173686
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 488,
+                Level = 493,
+                RequiredBloodEchoes = 3191359
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 489,
+                Level = 494,
+                RequiredBloodEchoes = 3209097
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 490,
+                Level = 495,
+                RequiredBloodEchoes = 3226901
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 491,
+                Level = 496,
+                RequiredBloodEchoes = 3244770
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 492,
+                Level = 497,
+                RequiredBloodEchoes = 3262705
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 493,
+                Level = 498,
+                RequiredBloodEchoes = 3280706
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 494,
+                Level = 499,
+                RequiredBloodEchoes = 3298772
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 495,
+                Level = 500,
+                RequiredBloodEchoes = 3316905
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 496,
+                Level = 501,
+                RequiredBloodEchoes = 3335104
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 497,
+                Level = 502,
+                RequiredBloodEchoes = 3353369
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 498,
+                Level = 503,
+                RequiredBloodEchoes = 3371700
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 499,
+                Level = 504,
+                RequiredBloodEchoes = 3390098
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 500,
+                Level = 505,
+                RequiredBloodEchoes = 3408562
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 501,
+                Level = 506,
+                RequiredBloodEchoes = 3427093
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 502,
+                Level = 507,
+                RequiredBloodEchoes = 3445691
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 503,
+                Level = 508,
+                RequiredBloodEchoes = 3464356
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 504,
+                Level = 509,
+                RequiredBloodEchoes = 3483088
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 505,
+                Level = 510,
+                RequiredBloodEchoes = 3501887
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 506,
+                Level = 511,
+                RequiredBloodEchoes = 3520753
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 507,
+                Level = 512,
+                RequiredBloodEchoes = 3539687
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 508,
+                Level = 513,
+                RequiredBloodEchoes = 3558689
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 509,
+                Level = 514,
+                RequiredBloodEchoes = 3577758
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 510,
+                Level = 515,
+                RequiredBloodEchoes = 3596895
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 511,
+                Level = 516,
+                RequiredBloodEchoes = 3616100
+            },
+
+            new EchoesPerLevel
+            {
+                Id = 512,
+                Level = 517,
+                RequiredBloodEchoes = 3635373
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 513,
+                Level = 518,
+                RequiredBloodEchoes = 3654714
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 514,
+                Level = 519,
+                RequiredBloodEchoes = 3674123
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 515,
+                Level = 520,
+                RequiredBloodEchoes = 3693601
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 516,
+                Level = 521,
+                RequiredBloodEchoes = 3713147
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 517,
+                Level = 522,
+                RequiredBloodEchoes = 3732762
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 518,
+                Level = 523,
+                RequiredBloodEchoes = 3752446
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 519,
+                Level = 524,
+                RequiredBloodEchoes = 3772198
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 520,
+                Level = 525,
+                RequiredBloodEchoes = 3792020
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 521,
+                Level = 526,
+                RequiredBloodEchoes = 3811911
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 522,
+                Level = 527,
+                RequiredBloodEchoes = 3831871
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 523,
+                Level = 528,
+                RequiredBloodEchoes = 3851900
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 524,
+                Level = 529,
+                RequiredBloodEchoes = 3871999
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 525,
+                Level = 530,
+                RequiredBloodEchoes = 3892167
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 526,
+                Level = 531,
+                RequiredBloodEchoes = 3912405
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 527,
+                Level = 532,
+                RequiredBloodEchoes = 3932713
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 528,
+                Level = 533,
+                RequiredBloodEchoes = 3953091
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 529,
+                Level = 534,
+                RequiredBloodEchoes = 3973539
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 530,
+                Level = 535,
+                RequiredBloodEchoes = 3994057
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 531,
+                Level = 536,
+                RequiredBloodEchoes = 4014645
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 532,
+                Level = 537,
+                RequiredBloodEchoes = 4035304
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 533,
+                Level = 538,
+                RequiredBloodEchoes = 4056034
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 534,
+                Level = 539,
+                RequiredBloodEchoes = 4076834
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 535,
+                Level = 540,
+                RequiredBloodEchoes = 4097705
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 536,
+                Level = 541,
+                RequiredBloodEchoes = 4118647
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 537,
+                Level = 542,
+                RequiredBloodEchoes = 4139660
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 538,
+                Level = 543,
+                RequiredBloodEchoes = 4160744
+            },
+            
+            new EchoesPerLevel
+            {
+                Id = 539,
+                Level = 544,
+                RequiredBloodEchoes = 4181899
+            }
+        };
+
+        await _context.EchoesPerLevels.AddRangeAsync(echoesPerLevel);
+        await _context.SaveChangesAsync();
+    }
+
+    private async Task SeedOrigins()
+    {
+        var origins = new List<Origin>
+        {
+            new Origin
+            {
+                Name = "Milquetoast",
+                Level = 10,
+                BloodEchoes = 300,
+                Discovery = 100,
+                Vitality = 11,
+                Endurance = 10,
+                Strength = 12,
+                Skill = 10,
+                Bloodtinge = 9,
+                Arcane = 8
+            },
+
+            new Origin
+            {
+                Name = "Lone Survivor",
+                Level = 10,
+                BloodEchoes = 420,
+                Discovery = 100,
+                Vitality = 14,
+                Endurance = 11,
+                Strength = 11,
+                Skill = 10,
+                Bloodtinge = 7,
+                Arcane = 7
+            },
+            
+            new Origin
+            {
+                Name = "Troubled Childhood",
+                Level = 10,
+                BloodEchoes = 360,
+                Discovery = 103,
+                Vitality = 9,
+                Endurance = 14,
+                Strength = 9,
+                Skill = 13,
+                Bloodtinge = 6,
+                Arcane = 9
+            },
+            
+            new Origin
+            {
+                Name = "Violent Past",
+                Level = 10,
+                BloodEchoes = 180,
+                Discovery = 100,
+                Vitality = 12,
+                Endurance = 11,
+                Strength = 15,
+                Skill = 9,
+                Bloodtinge = 6,
+                Arcane = 7
+            },
+            
+            new Origin
+            {
+                Name = "Professional",
+                Level = 10,
+                BloodEchoes = 240,
+                Discovery = 100,
+                Vitality = 9,
+                Endurance = 12,
+                Strength = 9,
+                Skill = 15,
+                Bloodtinge = 7,
+                Arcane = 8
+            },
+            
+            new Origin
+            {
+                Name = "Military Veteran",
+                Level = 10,
+                BloodEchoes = 320,
+                Discovery = 100,
+                Vitality = 10,
+                Endurance = 10,
+                Strength = 14,
+                Skill = 13,
+                Bloodtinge = 7,
+                Arcane = 6
+            },
+            
+            new Origin
+            {
+                Name = "Noble Scion",
+                Level = 10,
+                BloodEchoes = 240,
+                Discovery = 103,
+                Vitality = 7,
+                Endurance = 8,
+                Strength = 9,
+                Skill = 13,
+                Bloodtinge = 14,
+                Arcane = 9
+            },
+            
+            new Origin
+            {
+                Name = "Cruel Fate",
+                Level = 10,
+                BloodEchoes = 500,
+                Discovery = 119,
+                Vitality = 10,
+                Endurance = 12,
+                Strength = 10,
+                Skill = 9,
+                Bloodtinge = 5,
+                Arcane = 14
+            },
+            
+            new Origin
+            {
+                Name = "Waste of Skin",
+                Level = 4,
+                BloodEchoes = 10,
+                Discovery = 103,
+                Vitality = 10,
+                Endurance = 9,
+                Strength = 10,
+                Skill = 9,
+                Bloodtinge = 7,
+                Arcane = 9
+            }
+        };
+
+        await _context.Origins.AddRangeAsync(origins);
+        await _context.SaveChangesAsync();
+    }
 }

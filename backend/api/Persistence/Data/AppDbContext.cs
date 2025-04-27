@@ -15,6 +15,8 @@ namespace api.Persistence.Data
         public DbSet<Scaling> Scalings { get; set; }
         public DbSet<Firearm> Firearms { get; set; }
         public DbSet<Attack> Attacks { get; set; }
+        public DbSet<Origin> Origins { get; set; }
+        public DbSet<EchoesPerLevel> EchoesPerLevels { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -1,7 +1,4 @@
-﻿using api.Persistence.Data;
-using Microsoft.OpenApi.Models;
-using Microsoft.EntityFrameworkCore;
-using DotNetEnv;
+﻿using DotNetEnv;
 using Npgsql;
 using api.Configuration;
 
