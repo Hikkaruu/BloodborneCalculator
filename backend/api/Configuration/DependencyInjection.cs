@@ -48,5 +48,21 @@ namespace api.Configuration
             return services;
         }
 
+        public static IServiceCollection AddCorsOptions(this IServiceCollection services)
+        {
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAngular",
+                    policy =>
+                    {
+                        policy.WithOrigins("http://localhost:4200")
+                              .AllowAnyHeader()
+                              .AllowAnyMethod();
+                    });
+            });
+
+            return services;
+        }
     }
 }
