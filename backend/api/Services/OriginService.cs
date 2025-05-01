@@ -101,7 +101,7 @@ namespace api.Services
             }
 
             return originsList
-                .OrderByDescending(o => o.Level)
+                .OrderBy(o => o.Level)
                 .ToList();
         }
     }

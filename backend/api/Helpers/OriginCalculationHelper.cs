@@ -29,7 +29,7 @@ namespace api.Helpers
         {
             ValidateStats(origin, desiredVitality, desiredEndurance, desiredStrength, desiredSkill, desiredBloodtinge, desiredArcane);
 
-            int level = 0;
+            int level = origin.Level;
 
             if (desiredVitality > origin.Vitality)
                 level += desiredVitality - origin.Vitality;
