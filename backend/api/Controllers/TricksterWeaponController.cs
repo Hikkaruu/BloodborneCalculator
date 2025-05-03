@@ -1,7 +1,6 @@
 ﻿using api.Interfaces;
 using api.Models.DTOs.TricksterWeapon;
 using api.Models.Filters;
-using api.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers
@@ -23,6 +22,10 @@ namespace api.Controllers
             try
             {
                 var weapon = await _tricksterWeaponService.GetTricksterWeaponByIdAsync(id);
+
+                if (weapon == null)
+                    return NotFound($"Trickster Weapon with ID: {id} not found");
+
                 return Ok(weapon);
             }
             catch (Exception ex)
@@ -37,6 +40,10 @@ namespace api.Controllers
             try
             {
                 var weapons = await _tricksterWeaponService.GetAllTricksterWeaponsAsync();
+
+                if (weapons == null)
+                    return NotFound($"Trickster Weapons not found");
+
                 return Ok(weapons);
             }
             catch (Exception ex)
@@ -113,7 +120,7 @@ namespace api.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Error: {ex.Message}");
+                return StatusCode(422, $"Error: {ex.Message}");
             }
         }
 

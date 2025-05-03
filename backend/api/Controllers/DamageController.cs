@@ -1,6 +1,4 @@
 ﻿using api.Interfaces;
-using api.Models.DTOs.Damage;
-using api.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers
@@ -29,7 +27,7 @@ namespace api.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Error: {ex.Message}");
+                return StatusCode(422, $"Error: {ex.Message}");
             }
         }
 
@@ -46,7 +44,7 @@ namespace api.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Error: {ex.Message}");
+                return StatusCode(422, $"Error: {ex.Message}");
             }
         }
     }

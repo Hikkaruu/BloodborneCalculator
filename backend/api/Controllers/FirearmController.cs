@@ -1,5 +1,6 @@
 ﻿using api.Interfaces;
 using api.Models.DTOs.Firearm;
+using api.Models.Entities;
 using api.Models.Filters;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,6 +23,9 @@ namespace api.Controllers
             {
                 var firearm = await _firearmService.GetFirearmByIdAsync(id);
 
+                if (firearm == null)
+                    return NotFound($"Firearm with ID: {id} not found");
+
                 return Ok(firearm);
             }
             catch (Exception ex)
@@ -36,6 +40,9 @@ namespace api.Controllers
             try
             {
                 var firearms = await _firearmService.GetAllFirearmsAsync();
+
+                if (firearms == null)
+                    return NotFound($"Firearms not found");
 
                 return Ok(firearms);
             }
@@ -123,7 +130,7 @@ namespace api.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Error: {ex.Message}");
+                return StatusCode(422, $"Error: {ex.Message}");
             }
         }
 
