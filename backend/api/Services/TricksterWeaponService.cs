@@ -163,7 +163,8 @@ namespace api.Services
             if (tricksterWeapon.BloodAttack > 0)
             {
                 double bloodtingeScaling = _weaponCalculationHelper.getScaling(scaling.BloodtingeScaling, scaling.BloodtingeStep, weaponUpgradeLevel);
-                double tricksterWeaponAttack = (weaponUpgradeLevel == 10) ? tricksterWeapon.MaxUpgradeAttack
+                double tricksterWeaponAttack = (weaponUpgradeLevel == 10) 
+                    ? tricksterWeapon.MaxUpgradeAttack / ((float)tricksterWeapon.PhysicalAttack / tricksterWeapon.BloodAttack)
                     : tricksterWeapon.BloodAttack + (tricksterWeapon.BloodAttack/10) * weaponUpgradeLevel;
 
                 bloodAttackRating = (int)(
@@ -174,7 +175,8 @@ namespace api.Services
             if (tricksterWeapon.ArcaneAttack > 0)
             {
                 double arcaneScaling = _weaponCalculationHelper.getScaling(scaling.ArcaneScaling, scaling.ArcaneStep, weaponUpgradeLevel);
-                double tricksterWeaponAttack = (weaponUpgradeLevel == 10) ? tricksterWeapon.MaxUpgradeAttack
+                double tricksterWeaponAttack = (weaponUpgradeLevel == 10)
+                    ? tricksterWeapon.MaxUpgradeAttack / ((float)tricksterWeapon.PhysicalAttack / tricksterWeapon.ArcaneAttack)
                     : tricksterWeapon.ArcaneAttack + (tricksterWeapon.ArcaneAttack/10) * weaponUpgradeLevel;
 
                 arcaneAttackRating = (int)(
@@ -185,7 +187,8 @@ namespace api.Services
             if (tricksterWeapon.FireAttack > 0)
             {
                 double arcaneScaling = _weaponCalculationHelper.getScaling(scaling.ArcaneScaling, scaling.ArcaneStep, weaponUpgradeLevel);
-                double tricksterWeaponAttack = (weaponUpgradeLevel == 10) ? tricksterWeapon.MaxUpgradeAttack
+                double tricksterWeaponAttack = (weaponUpgradeLevel == 10) 
+                    ? tricksterWeapon.MaxUpgradeAttack / ((float)tricksterWeapon.PhysicalAttack / tricksterWeapon.FireAttack)
                     : tricksterWeapon.FireAttack + (tricksterWeapon.FireAttack / 10) * weaponUpgradeLevel;
 
                 fireAttackRating = (int)(
@@ -196,7 +199,8 @@ namespace api.Services
             if (tricksterWeapon.BoltAttack > 0)
             {
                 double arcaneScaling = _weaponCalculationHelper.getScaling(scaling.ArcaneScaling, scaling.ArcaneStep, weaponUpgradeLevel);
-                double tricksterWeaponAttack = (weaponUpgradeLevel == 10) ? tricksterWeapon.MaxUpgradeAttack
+                double tricksterWeaponAttack = (weaponUpgradeLevel == 10) 
+                    ? tricksterWeapon.MaxUpgradeAttack / ((float)tricksterWeapon.PhysicalAttack / tricksterWeapon.BoltAttack)
                     : tricksterWeapon.BoltAttack + (tricksterWeapon.BoltAttack / 10) * weaponUpgradeLevel;
 
                 boltAttackRating = (int)(
