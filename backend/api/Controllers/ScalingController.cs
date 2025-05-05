@@ -1,5 +1,6 @@
 ﻿using api.Interfaces;
 using api.Models.DTOs.Scaling;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers
@@ -43,6 +44,7 @@ namespace api.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> CreateAsync([FromBody] CreateScalingDto createDto)
         {
@@ -57,6 +59,7 @@ namespace api.Controllers
             }
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateAsync(int id, [FromBody] UpdateScalingDto updateDto)
         {
@@ -73,6 +76,7 @@ namespace api.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {

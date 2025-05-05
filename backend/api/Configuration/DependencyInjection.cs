@@ -3,7 +3,10 @@ using api.Mapping;
 using api.Persistence.Data;
 using api.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using Sprache;
+using Swashbuckle.AspNetCore.Filters;
 
 namespace api.Configuration
 {
@@ -35,6 +38,7 @@ namespace api.Configuration
 
         public static IServiceCollection AddSwaggerDocumentation(this IServiceCollection services)
         {
+            var authority = Environment.GetEnvironmentVariable("AUTHORITY");
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
@@ -43,6 +47,19 @@ namespace api.Configuration
                     Version = "1.0.0",
                     Description = "Bloodborne API for calculator purposes"
                 });
+
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "bearer",
+                    BearerFormat = "JWT",
+                    In = ParameterLocation.Header,
+                    Description = "Enter JWT token"
+                });
+                c.OperationFilter<AuthorizeCheckOperationFilter>();
+                c.ExampleFilters();
+                c.EnableAnnotations();
             });
 
             return services;
