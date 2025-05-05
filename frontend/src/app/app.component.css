@@ -1,0 +1,27 @@
+.bloodborne-menu-back {
+  font-family: "IM Fell English SC", serif;
+  color: #a0a0a8;
+  font-size: 1.4rem;
+  padding: 14px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+
+  &:hover {
+    color: #a50808;
+    transform: translateX(10px);
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: -20px;
+      top: 2.5px;
+      width: 48px;
+      height: 48px;
+      background-image: url("../assets/images/huntersmark_red.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      display: inline-block;
+    }
+  }
+}
