@@ -1,0 +1,91 @@
+<div class="boss-container">
+  <h1 class="bloodborne-title">Bosses</h1>
+
+  <div class="select-container">
+    <select class="boss-select" (change)="onBossSelected($event)">
+      @if (bosses.length > 0) {
+      <option [value]="bosses[0].id" selected>{{ bosses[0].name }}</option>
+      } @for (boss of bosses; track boss.id; let i = $index) { @if (i !== 0) {
+      <option [value]="boss.id">{{ boss.name }}</option>
+      } }
+    </select>
+  </div>
+
+  @if (selectedBoss) {
+  <div class="boss-card">
+    <div class="boss-main-info">
+      <img
+        [src]="`assets/images/bosses/${selectedBoss.name}.jpg`"
+        [alt]="selectedBoss.name"
+        class="boss-image"
+      />
+      <h2>{{ selectedBoss.name }}</h2>
+
+      <div class="basic-stats">
+        <div class="stat-row">
+          <span><img src="assets/images/HP.png" /> Health:</span>
+          <span>{{ selectedBoss.health }}</span>
+        </div>
+        <div class="stat-row">
+          <span><img src="assets/images/Echoes.png" /> Blood Echoes:</span>
+          <span>{{ selectedBoss.bloodEchoes }}</span>
+        </div>
+        <div class="stat-row">
+          <span><img src="assets/images/Beast.png" /> Beast:</span>
+          <span>{{ boolToYesNo(selectedBoss.isBeast) }}</span>
+        </div>
+        <div class="stat-row">
+          <span><img src="assets/images/Kin.png" /> Kin:</span>
+          <span>{{ boolToYesNo(selectedBoss.isKin) }}</span>
+        </div>
+        <div class="stat-row">
+          <span><img src="assets/images/Required.png" /> Required:</span>
+          <span>{{ boolToYesNo(selectedBoss.isRequired) }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="defense-stats">
+      <h3>Defense Stats</h3>
+      <div class="stat-row">
+        <span><img src="assets/images/Physical.png" /> Physical:</span>
+        <span>{{ selectedBoss.physicalDefense }}</span>
+      </div>
+      <div class="stat-row">
+        <span><img src="assets/images/Blunt.png" /> Blunt:</span>
+        <span>{{ selectedBoss.bluntDefense }}</span>
+      </div>
+      <div class="stat-row">
+        <span><img src="assets/images/Thrust.png" /> Thrust:</span>
+        <span>{{ selectedBoss.thrustDefense }}</span>
+      </div>
+      <div class="stat-row">
+        <span
+          ><img src="assets/images/bloodtingeDefense.png" /> Bloodtinge:</span
+        >
+        <span>{{ selectedBoss.bloodtingeDefense }}</span>
+      </div>
+      <div class="stat-row">
+        <span><img src="assets/images/arcaneDefense.png" /> Arcane:</span>
+        <span>{{ selectedBoss.arcaneDefense }}</span>
+      </div>
+      <div class="stat-row">
+        <span><img src="assets/images/Fire.png" /> Fire:</span>
+        <span>{{ selectedBoss.fireDefense }}</span>
+      </div>
+      <div class="stat-row">
+        <span><img src="assets/images/Bolt.png" /> Bolt:</span>
+        <span>{{ selectedBoss.boltDefense }}</span>
+      </div>
+      <div class="stat-row">
+        <span><img src="assets/images/Slow Poison.png" /> Slow Poison:</span>
+        <span>{{ selectedBoss.slowPoisonResistance }}</span>
+      </div>
+      <div class="stat-row">
+        <span><img src="assets/images/Rapid Poison.png" /> Rapid Poison:</span>
+        <span>{{ selectedBoss.rapidPoisonResistance }}</span>
+      </div>
+    </div>
+  </div>
+  }
+</div>

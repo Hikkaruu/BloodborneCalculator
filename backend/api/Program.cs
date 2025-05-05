@@ -1,9 +1,6 @@
-﻿using api.Persistence.Data;
-using Microsoft.OpenApi.Models;
-using Microsoft.EntityFrameworkCore;
-using DotNetEnv;
+﻿using DotNetEnv;
 using Npgsql;
-using System.Data.Common;
+using api.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,19 +13,13 @@ var dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD");
 var connectionString = $"Host={dbHost};Database={dbName};Username={dbUser};Password={dbPassword}";
 
 // Add services to the container.
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(connectionString));
+
+builder.Services.AddInfrastructureLayer(connectionString);
+builder.Services.AddApplicationLayer();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo
-    {
-        Title = "Bloodborne API",
-        Version = "1.0.0",
-        Description = "Bloodborne API for calculator purposes"
-    });
-});
+builder.Services.AddSwaggerDocumentation();
+builder.Services.AddCorsOptions();
 
 var app = builder.Build();
 
@@ -56,11 +47,29 @@ catch (Exception ex)
     Console.WriteLine($"\nConnection Error: {ex.Message}");
 }
 
+// Db Seeder
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var seeder = services.GetRequiredService<DataSeeder>();
+        await seeder.SeedAsync();
+    }
+    catch (Exception ex)
+    {
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred while seeding the database.");
+    }
+}
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("AllowAngular");
 
 app.UseHttpsRedirection();
 

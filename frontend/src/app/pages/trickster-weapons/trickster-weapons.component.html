@@ -1,0 +1,289 @@
+<h1 class="bloodborne-title">Trickster Weapons</h1>
+<div class="bloodborne-separator"></div>
+<div class="bloodborne-content">
+  <div class="header-container">
+    <div class="trickster-weapon-selector" (click)="loadTricksterWeapons()">
+      @if (selectedTricksterWeapon) {
+      <img
+        src="assets/images/trickster-weapons/{{
+          selectedTricksterWeapon.name
+        }}.png"
+        [alt]="selectedTricksterWeapon.name"
+        class="trickster-weapon-image"
+      />
+      <span class="trickster-weapon-text">{{
+        selectedTricksterWeapon.name
+      }}</span>
+      } @else {
+      <span>Select Trickster Weapon</span>
+      }
+    </div>
+    <app-boss-popup></app-boss-popup>
+  </div>
+
+  <app-stats-for-weapons></app-stats-for-weapons>
+
+  @if (selectedTricksterWeapon) {
+  <div class="selected-firearm">
+    <div class="firearm-header">
+      <div class="imprints-container">
+        @if (selectedTricksterWeapon.imprintsNormal !== 0 &&
+        selectedTricksterWeapon.imprintsUncanny !== 0 &&
+        selectedTricksterWeapon.imprintsLost !== 0) { @for (img of
+        getImprintImages(getCurrentImprintValue()); track img.id) {
+        <img
+          src="assets/images/imprints/imprint{{ img.value }}.png"
+          [alt]="'Imprint ' + img.value"
+          class="imprint-image"
+        />
+        } }
+      </div>
+      <h3 class="selected-firearm-name">
+        {{ selectedWeaponType }} {{ selectedTricksterWeapon.name }} +
+        {{ stats.upgradeLevel }}
+      </h3>
+    </div>
+    <div class="firearm-details">
+      <img
+        src="assets/images/trickster-weapons/{{
+          selectedTricksterWeapon.name
+        }}.png"
+        [alt]="selectedTricksterWeapon.name"
+        class="firearm-detail-image"
+      />
+      <div class="firearm-stats">
+        <div><strong>Attack Rating:</strong> {{ attackRating }}</div>
+
+        @if (+attackRating > 0 && selectedBoss) {
+        <div
+          class="damage-section"
+          (click)="openDamagePopup(selectedTricksterWeapon)"
+        >
+          <strong>Damage: </strong>
+          <span class="clickable-damage">[Show All Attacks]</span>
+        </div>
+        } @else {
+        <div class="damage-section-no-attacks">
+          <strong>Damage: </strong>
+          <span>-</span>
+        </div>
+        }
+        <div>
+          <strong>Bullet Use:</strong> {{ selectedTricksterWeapon.bulletUse }}
+        </div>
+        <div>
+          <strong>Requirements:</strong>
+          <span
+            [class.requirement-met]="
+              meetsRequirement(
+                selectedTricksterWeapon.strengthRequirement,
+                stats.strength
+              )
+            "
+            [class.requirement-not-met]="
+              !meetsRequirement(
+                selectedTricksterWeapon.strengthRequirement,
+                stats.strength
+              )
+            "
+          >
+            STR {{ selectedTricksterWeapon.strengthRequirement }}
+          </span>
+          <span
+            [class.requirement-met]="
+              meetsRequirement(
+                selectedTricksterWeapon.skillRequirement,
+                stats.skill
+              )
+            "
+            [class.requirement-not-met]="
+              !meetsRequirement(
+                selectedTricksterWeapon.skillRequirement,
+                stats.skill
+              )
+            "
+          >
+            SKL {{ selectedTricksterWeapon.skillRequirement }}
+          </span>
+          <span
+            [class.requirement-met]="
+              meetsRequirement(
+                selectedTricksterWeapon.bloodtingeRequirement,
+                stats.bloodtinge
+              )
+            "
+            [class.requirement-not-met]="
+              !meetsRequirement(
+                selectedTricksterWeapon.bloodtingeRequirement,
+                stats.bloodtinge
+              )
+            "
+          >
+            BLT {{ selectedTricksterWeapon.bloodtingeRequirement }}
+          </span>
+          <span
+            [class.requirement-met]="
+              meetsRequirement(
+                selectedTricksterWeapon.arcaneRequirement,
+                stats.arcane
+              )
+            "
+            [class.requirement-not-met]="
+              !meetsRequirement(
+                selectedTricksterWeapon.arcaneRequirement,
+                stats.arcane
+              )
+            "
+          >
+            ARC {{ selectedTricksterWeapon.arcaneRequirement }}
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="weapon-selector">
+      <select
+        class="weapon-type-selector"
+        (change)="onWeaponTypeChange($event)"
+      >
+        <option value="Normal">Normal</option>
+        <option value="Uncanny">Uncanny</option>
+        <option value="Lost">Lost</option>
+      </select>
+    </div>
+  </div>
+  } @if (showTricksterWeaponPopup) {
+  <div
+    class="trickster-weapon-popup-overlay"
+    (click)="showTricksterWeaponPopup = false"
+  >
+    <div class="trickster-weapon-popup" (click)="$event.stopPropagation()">
+      <h3>Select Trickster Weapon</h3>
+      <div class="trickster-weapon-list">
+        @for (tricksterWeapon of tricksterWeapons; track tricksterWeapon.id) {
+        <div
+          class="trickster-weapon-item"
+          (click)="selectTricksterWeapon(tricksterWeapon)"
+        >
+          <img
+            src="assets/images/trickster-weapons/{{ tricksterWeapon.name }}.png"
+            alt="{{ tricksterWeapon.name }}"
+            [alt]="tricksterWeapon.name"
+            class="trickster-weapon-list-image"
+          />
+          <div class="trickster-weapon-info">
+            <h4>{{ tricksterWeapon.name }}</h4>
+            <div class="damage-types">
+              <span *ngIf="tricksterWeapon.physicalAttack > 0"
+                >Physical: {{ tricksterWeapon.physicalAttack }}</span
+              >
+              <span *ngIf="tricksterWeapon.bloodAttack > 0">
+                Blood: {{ tricksterWeapon.bloodAttack }}</span
+              >
+              <span *ngIf="tricksterWeapon.arcaneAttack > 0">
+                Arcane: {{ tricksterWeapon.arcaneAttack }}</span
+              >
+              <span *ngIf="tricksterWeapon.fireAttack > 0">
+                Fire: {{ tricksterWeapon.fireAttack }}</span
+              >
+              <span *ngIf="tricksterWeapon.boltAttack > 0">
+                Bolt: {{ tricksterWeapon.boltAttack }}</span
+              >
+            </div>
+            <div class="requirements">
+              <span>STR {{ tricksterWeapon.strengthRequirement }}</span>
+              <span> | SKL {{ tricksterWeapon.skillRequirement }}</span>
+              <span> | BLD {{ tricksterWeapon.bloodtingeRequirement }}</span>
+              <span> | ARC {{ tricksterWeapon.arcaneRequirement }}</span>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+      <button
+        class="bloodborne-btn close-btn"
+        (click)="showTricksterWeaponPopup = false"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+  } @if (showDamagePopup && selectedTricksterWeapon && selectedBoss) {
+  <div class="damage-popup-overlay" (click)="closeDamagePopup()">
+    <div class="damage-popup" (click)="$event.stopPropagation()">
+      <h2>{{ selectedTricksterWeapon.name }} Attacks Table</h2>
+
+      <div class="attack-columns-container">
+        <div class="attack-column">
+          <h3 class="attack-mode-title">Normal Attacks</h3>
+          <div class="attack-list">
+            @for (attack of getAttacksByMode(0); track attack.name) {
+            <div class="attack-item">
+              <div class="attack-name">{{ attack.name }}</div>
+              <div class="attack-damage">
+                Damage: {{ getDamageForAttack(attack.name, attack.attackMode) }}
+              </div>
+              <div class="attack-types">
+                @if (getAttackTypeIcon(attack.attackType1)) {
+                <img
+                  src="assets/images/damage-types/{{
+                    getAttackTypeIcon(attack.attackType1)
+                  }}.png"
+                  [alt]="getAttackTypeIcon(attack.attackType1)"
+                  class="attack-type-icon"
+                />
+                } @if (getAttackTypeIcon(attack.attackType2)) {
+                <img
+                  src="assets/images/damage-types/{{
+                    getAttackTypeIcon(attack.attackType2)
+                  }}.png"
+                  [alt]="getAttackTypeIcon(attack.attackType2)"
+                  class="attack-type-icon"
+                />
+                }
+              </div>
+            </div>
+            }
+          </div>
+        </div>
+
+        <div class="attack-column">
+          <h3 class="attack-mode-title">Transformed Attacks</h3>
+          <div class="attack-list">
+            @for (attack of getAttacksByMode(1); track attack.name) {
+            <div class="attack-item">
+              <div class="attack-name">{{ attack.name }}</div>
+              <div class="attack-damage">
+                Damage: {{ getDamageForAttack(attack.name, attack.attackMode) }}
+              </div>
+              <div class="attack-types">
+                @if (getAttackTypeIcon(attack.attackType1)) {
+                <img
+                  src="assets/images/damage-types/{{
+                    getAttackTypeIcon(attack.attackType1)
+                  }}.png"
+                  [alt]="getAttackTypeIcon(attack.attackType1)"
+                  class="attack-type-icon"
+                />
+                } @if (getAttackTypeIcon(attack.attackType2)) {
+                <img
+                  src="assets/images/damage-types/{{
+                    getAttackTypeIcon(attack.attackType2)
+                  }}.png"
+                  [alt]="getAttackTypeIcon(attack.attackType2)"
+                  class="attack-type-icon"
+                />
+                }
+              </div>
+            </div>
+            }
+          </div>
+        </div>
+      </div>
+
+      <button class="bloodborne-btn close-btn" (click)="closeDamagePopup()">
+        Close
+      </button>
+    </div>
+  </div>
+  }
+</div>

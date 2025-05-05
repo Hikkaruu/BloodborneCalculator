@@ -10,25 +10,27 @@ namespace api.Persistence.Data
         {
         }
 
-        public DbSet<TricksterWeapons> TricksterWeapons { get; set; }
-        public DbSet<Bosses> Bosses { get; set; }
-        public DbSet<Scalings> Scalings { get; set; }
-        public DbSet<Firearms> Firearms { get; set; }
-        public DbSet<Attacks> Attacks { get; set; }
+        public DbSet<TricksterWeapon> TricksterWeapons { get; set; }
+        public DbSet<Boss> Bosses { get; set; }
+        public DbSet<Scaling> Scalings { get; set; }
+        public DbSet<Firearm> Firearms { get; set; }
+        public DbSet<Attack> Attacks { get; set; }
+        public DbSet<Origin> Origins { get; set; }
+        public DbSet<EchoesPerLevel> EchoesPerLevels { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<TricksterWeapons>()
-                .HasOne(tw => tw.Scalings)         
+            modelBuilder.Entity<TricksterWeapon>()
+                .HasOne(tw => tw.Scaling)         
                 .WithOne(s => s.TricksterWeapons)  
-                .HasForeignKey<TricksterWeapons>(tw => tw.ScalingId);
+                .HasForeignKey<TricksterWeapon>(tw => tw.ScalingId);
 
-            modelBuilder.Entity<Firearms>()
+            modelBuilder.Entity<Firearm>()
                 .HasOne(f => f.Scalings)
                 .WithOne(s => s.Firearms)
-                .HasForeignKey<Firearms>(f => f.ScalingId);
+                .HasForeignKey<Firearm>(f => f.ScalingId);
 
-            modelBuilder.Entity<Attacks>()
+            modelBuilder.Entity<Attack>()
                 .HasOne(a => a.TricksterWeapons)
                 .WithMany(tw => tw.Attacks)
                 .HasForeignKey(a => a.TricksterWeaponId);

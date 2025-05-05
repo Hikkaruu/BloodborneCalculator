@@ -1,0 +1,396 @@
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 550px;
+}
+
+.trickster-weapon-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 55px;
+  background: rgba(20, 0, 20, 0.5);
+  border: 1px solid #3a2a1e;
+  color: #da8a67;
+  font-family: "IM Fell English SC", serif;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+  width: 150px;
+  height: 60px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  justify-content: center;
+}
+
+.trickster-weapon-text {
+  min-width: 140px;
+}
+
+.trickster-weapon-selector:hover {
+  border-color: #8b0000;
+  box-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+}
+
+.trickster-weapon-image {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.trickster-weapon-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.trickster-weapon-popup {
+  background: rgba(20, 0, 20, 0.9);
+  border: 1px solid #8b0000;
+  padding: 20px;
+  max-width: 800px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 0 20px rgba(139, 0, 0, 0.5);
+}
+
+.trickster-weapon-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.trickster-weapon-item {
+  background: rgba(30, 0, 30, 0.7);
+  padding: 10px;
+  border: 1px solid #3a2a1e;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.trickster-weapon-item:hover {
+  border-color: #8b0000;
+  background: rgba(50, 0, 50, 0.7);
+}
+
+.trickster-weapon-list-image {
+  width: 100%;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.trickster-weapon-info h4 {
+  margin: 5px 0;
+  color: #da8a67;
+}
+
+.damage-types {
+  font-size: 0.8rem;
+  margin-bottom: 5px;
+}
+
+.requirements {
+  font-size: 0.8rem;
+  color: #c0b090;
+}
+
+.requirement-met {
+  color: #5cb85c;
+  margin-right: 10px;
+}
+
+.requirement-not-met {
+  color: #d9534f;
+  margin-right: 10px;
+}
+
+.imprint-image {
+  width: 40px;
+  height: 40px;
+  margin-right: 5px;
+}
+
+.selected-firearm {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(20, 0, 20, 0.3);
+  border: 1px solid #3a2a1e;
+}
+
+.selected-firearm-name {
+  margin: 0;
+  font-size: 1.4rem;
+  color: #da8a67;
+  font-family: "IM Fell English SC", serif;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.firearm-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+  min-height: 40px;
+}
+
+.firearm-detail-image {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border: 1px solid #3a2a1e;
+}
+
+.firearm-details {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.firearm-stats {
+  flex: 1;
+  font-size: 0.9rem;
+}
+
+.firearm-stats div {
+  margin-bottom: 8px;
+}
+
+.weapon-type-selector {
+  background: rgba(20, 0, 20, 0.5);
+  border: 1px solid #3a2a1e;
+  color: #da8a67;
+  font-family: "IM Fell English SC", serif;
+  font-size: 1.1rem;
+  padding: 4px 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100px;
+  height: 35px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 5px;
+  appearance: none;
+  text-align: center;
+}
+
+.weapon-type-selector:hover {
+  border-color: #8b0000;
+  box-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+}
+
+.weapon-type-selector option {
+  background: rgba(20, 0, 20, 0.9);
+  color: #da8a67;
+  padding: 10px;
+  font-family: "IM Fell English SC", serif;
+}
+
+.weapon-type-selector option:hover {
+  background: rgba(50, 0, 50, 0.7);
+}
+
+.weapon-selector {
+  margin-top: 5px;
+}
+
+.damage-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.damage-popup {
+  background: rgba(20, 0, 20, 0.9);
+  border: 1px solid #8b0000;
+  padding: 20px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 0 20px rgba(139, 0, 0, 0.5);
+}
+
+.attack-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.attack-item {
+  padding: 10px;
+  background: rgba(30, 0, 30, 0.7);
+  border: 1px solid #3a2a1e;
+  margin-bottom: 8px;
+}
+
+.attack-columns-container {
+  display: flex;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.attack-column {
+  flex: 1;
+  min-width: 0;
+}
+
+.attack-mode-title {
+  color: #da8a67;
+  border-bottom: 1px solid #8b0000;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  font-family: "IM Fell English SC", serif;
+}
+
+.attack-name {
+  color: #da8a67;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.attack-types {
+  display: flex;
+  gap: 5px;
+  margin: 5px 0;
+}
+
+.attack-type-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 2px rgba(139, 0, 0, 0.7));
+}
+
+.attack-damage {
+  color: #c0b090;
+}
+
+.attack-extra {
+  color: #8b0000;
+  font-size: 0.9rem;
+  margin-top: 3px;
+}
+
+.damage-section {
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.damage-section-no-attacks {
+  margin-bottom: 8px;
+}
+
+.clickable-damage {
+  text-decoration: underline;
+  color: #da8a67;
+}
+
+.damage-section:hover .clickable-damage {
+  color: #8b0000;
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  .trickster-weapon-text {
+    min-width: 0;
+    font-size: 0.95rem;
+  }
+
+  .trickster-weapon-popup,
+  .damage-popup {
+    padding: 15px;
+    width: 95%;
+  }
+
+  .trickster-weapon-list {
+    grid-template-columns: 1fr;
+  }
+
+  .firearm-details {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .firearm-detail-image {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+  }
+
+  .weapon-type-selector {
+    width: 100%;
+    font-size: 1rem;
+    height: 35px;
+  }
+
+  .selected-firearm-name {
+    font-size: 1.2rem;
+  }
+
+  .imprint-image {
+    width: 30px;
+    height: 30px;
+  }
+
+  .bloodborne-content {
+    margin-bottom: 90px;
+  }
+
+  .attack-columns-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .attack-column {
+    flex: 1 1 48%;
+    min-width: 48%;
+  }
+
+  .attack-item {
+    padding: 6px;
+    font-size: 0.85rem;
+  }
+
+  .attack-name {
+    font-size: 0.95rem;
+  }
+
+  .attack-type-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .attack-damage,
+  .attack-extra {
+    font-size: 0.75rem;
+  }
+}

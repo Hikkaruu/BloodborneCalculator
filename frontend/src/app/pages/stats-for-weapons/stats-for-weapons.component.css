@@ -1,0 +1,137 @@
+.bloodborne-btn {
+  background: rgba(20, 0, 20, 0.5);
+  border: 1px solid #3a2a1e;
+  color: #c0b090;
+  width: 32px;
+  height: 32px;
+  margin: 0 3px;
+  cursor: pointer;
+  font-family: "IM Fell English SC", serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 2px #000;
+  border-radius: 3px;
+}
+
+.bloodborne-btn:hover {
+  background: rgba(139, 0, 0, 0.5);
+  color: #fff;
+  border-color: #8b0000;
+  transform: translateY(-2px);
+  box-shadow: 0 0 8px rgba(139, 0, 0, 0.7);
+}
+
+.bloodborne-btn:active {
+  transform: translateY(0);
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.7);
+}
+
+.bloodborne-stats {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+  font-family: "IM Fell English SC", serif;
+  color: #c0b090;
+}
+
+.bloodborne-stats tr {
+  border-bottom: 1px dashed rgba(139, 0, 0, 0.3);
+}
+
+.bloodborne-stats tr:last-child {
+  border-bottom: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.stat-name {
+  padding: 12px 15px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+}
+
+.stat-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  display: inline-block;
+  object-fit: contain;
+  filter: drop-shadow(0 0 2px rgba(139, 0, 0, 0.7));
+}
+
+.stat-input {
+  width: 50px;
+  text-align: center;
+  padding: 8px;
+  background: rgba(20, 0, 20, 0.3);
+  border: 1px solid #3a2a1e;
+  color: #da8a67;
+  font-family: "IM Fell English SC", serif;
+  font-size: 1.1rem;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.stat-input:focus {
+  outline: none;
+  border-color: #8b0000;
+  box-shadow: 0 0 8px rgba(139, 0, 0, 0.5);
+}
+
+.stat-controls {
+  padding: 0 10px;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .bloodborne-stats {
+    font-size: 0.95rem;
+    width: 100%;
+  }
+
+  .stat-name {
+    padding: 10px 8px;
+    font-size: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .stat-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+  }
+
+  .stat-input {
+    width: 40px;
+    font-size: 1rem;
+    padding: 6px;
+  }
+
+  .stat-controls {
+    padding: 0 5px;
+  }
+
+  .bloodborne-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
+    margin: 0 2px;
+  }
+
+  .bloodborne-btn:hover {
+    transform: none;
+    box-shadow: 0 0 6px rgba(139, 0, 0, 0.6);
+  }
+}

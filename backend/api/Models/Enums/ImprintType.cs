@@ -2,6 +2,7 @@
 {
     public enum ImprintType
     {
+        Imprint0,
         Imprint1,     
         Imprint221,  
         Imprint223,

@@ -1,0 +1,126 @@
+<table class="bloodborne-stats">
+  <tr>
+    <td class="stat-name">
+      <img src="assets/images/strength.png" alt="Strength" class="stat-icon" />
+      <span>Strength</span>
+    </td>
+    <td>
+      <input
+        type="number"
+        min="1"
+        max="99"
+        [value]="stats.strength"
+        class="stat-input"
+        (input)="validateStat('strength', $event, 1, 99)"
+      />
+    </td>
+    <td class="stat-controls">
+      <button class="bloodborne-btn" (click)="increaseStat('strength', 99)">
+        ↑
+      </button>
+      <button class="bloodborne-btn" (click)="decreaseStat('strength', 1)">
+        ↓
+      </button>
+    </td>
+  </tr>
+  <tr>
+    <td class="stat-name">
+      <img src="assets/images/skill.png" alt="Skill" class="stat-icon" />
+      <span>Skill</span>
+    </td>
+    <td>
+      <input
+        type="number"
+        min="1"
+        max="99"
+        [value]="stats.skill"
+        class="stat-input"
+        (input)="validateStat('skill', $event, 1, 99)"
+      />
+    </td>
+    <td class="stat-controls">
+      <button class="bloodborne-btn" (click)="increaseStat('skill', 99)">
+        ↑
+      </button>
+      <button class="bloodborne-btn" (click)="decreaseStat('skill', 1)">
+        ↓
+      </button>
+    </td>
+  </tr>
+  <tr>
+    <td class="stat-name">
+      <img
+        src="assets/images/bloodtinge.png"
+        alt="Bloodtinge"
+        class="stat-icon"
+      />
+      <span>Bloodtinge</span>
+    </td>
+    <td>
+      <input
+        type="number"
+        min="1"
+        max="99"
+        [value]="stats.bloodtinge"
+        class="stat-input"
+        (input)="validateStat('bloodtinge', $event, 1, 99)"
+      />
+    </td>
+    <td class="stat-controls">
+      <button class="bloodborne-btn" (click)="increaseStat('bloodtinge', 99)">
+        ↑
+      </button>
+      <button class="bloodborne-btn" (click)="decreaseStat('bloodtinge', 1)">
+        ↓
+      </button>
+    </td>
+  </tr>
+  <tr>
+    <td class="stat-name">
+      <img src="assets/images/arcane.png" alt="Arcane" class="stat-icon" />
+      <span>Arcane</span>
+    </td>
+    <td>
+      <input
+        type="number"
+        min="1"
+        max="99"
+        [value]="stats.arcane"
+        class="stat-input"
+        (input)="validateStat('arcane', $event, 1, 99)"
+      />
+    </td>
+    <td class="stat-controls">
+      <button class="bloodborne-btn" (click)="increaseStat('arcane', 99)">
+        ↑
+      </button>
+      <button class="bloodborne-btn" (click)="decreaseStat('arcane', 1)">
+        ↓
+      </button>
+    </td>
+  </tr>
+  <tr>
+    <td class="stat-name">
+      <img src="assets/images/Upgrade.png" alt="Upgrade" class="stat-icon" />
+      <span>Upgrade</span>
+    </td>
+    <td>
+      <input
+        type="number"
+        min="0"
+        max="10"
+        [value]="stats.upgradeLevel"
+        class="stat-input"
+        (input)="validateStat('upgradeLevel', $event, 0, 10)"
+      />
+    </td>
+    <td class="stat-controls">
+      <button class="bloodborne-btn" (click)="increaseStat('upgradeLevel', 10)">
+        ↑
+      </button>
+      <button class="bloodborne-btn" (click)="decreaseStat('upgradeLevel', 0)">
+        ↓
+      </button>
+    </td>
+  </tr>
+</table>

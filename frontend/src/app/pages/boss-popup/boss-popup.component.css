@@ -1,0 +1,153 @@
+.boss-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: rgba(20, 0, 20, 0.5);
+  border: 1px solid #3a2a1e;
+  color: #da8a67;
+  font-family: "IM Fell English SC", serif;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+  width: 220px;
+  height: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.boss-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-align: center;
+  flex-grow: 1;
+  padding: 0 5px;
+}
+
+.boss-selector:hover {
+  border-color: #8b0000;
+  box-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+}
+
+.boss-image {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.selected-boss {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(20, 0, 20, 0.3);
+  border: 1px solid #3a2a1e;
+}
+
+.boss-details {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.boss-detail-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 1px solid #3a2a1e;
+}
+
+.boss-stats {
+  flex: 1;
+  font-size: 0.9rem;
+}
+
+.boss-stats div {
+  margin-bottom: 8px;
+}
+
+.boss-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.boss-popup {
+  background: rgba(20, 0, 20, 0.9);
+  border: 1px solid #8b0000;
+  padding: 20px;
+  max-width: 800px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 0 20px rgba(139, 0, 0, 0.5);
+}
+
+.boss-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.boss-item {
+  background: rgba(30, 0, 30, 0.7);
+  padding: 10px;
+  border: 1px solid #3a2a1e;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.boss-item:hover {
+  border-color: #8b0000;
+  background: rgba(50, 0, 50, 0.7);
+}
+
+.boss-list-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  margin-bottom: 10px;
+  object-position: top center;
+}
+
+.boss-info h4 {
+  margin: 5px 0;
+  color: #da8a67;
+}
+
+.boss-type {
+  font-size: 0.8rem;
+  margin-bottom: 5px;
+}
+
+.boss-health {
+  font-size: 0.8rem;
+  color: #c0b090;
+}
+
+@media (max-width: 600px) {
+  .boss-details {
+    flex-direction: column;
+  }
+
+  .boss-detail-image {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+  }
+
+  .boss-list {
+    grid-template-columns: 1fr;
+  }
+}
