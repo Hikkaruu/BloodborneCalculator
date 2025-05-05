@@ -1,6 +1,7 @@
 ﻿using api.Interfaces;
 using api.Models.DTOs.Boss;
 using api.Models.Filters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers
@@ -45,6 +46,7 @@ namespace api.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> CreateAsync([FromBody] CreateBossDto createDto)
         {
@@ -60,6 +62,7 @@ namespace api.Controllers
             }
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateAsync(int id, [FromBody] UpdateBossDto updateDto)
         {
@@ -78,6 +81,7 @@ namespace api.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
