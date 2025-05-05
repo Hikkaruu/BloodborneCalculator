@@ -1,0 +1,189 @@
+<h1 class="bloodborne-title">Optimal Class Selector</h1>
+<div class="bloodborne-separator"></div>
+<div class="bloodborne-content">
+  <table class="bloodborne-stats">
+    <tr>
+      <td class="stat-name">
+        <img
+          src="assets/images/vitality.png"
+          alt="Vitality"
+          class="stat-icon"
+        />
+        <span>Vitality</span>
+      </td>
+      <td>
+        <input
+          type="number"
+          min="1"
+          max="99"
+          [value]="stats.vitality"
+          class="stat-input"
+          (input)="validateStat('vitality', $event)"
+        />
+      </td>
+      <td class="stat-controls">
+        <button class="bloodborne-btn" (click)="increaseStat('vitality')">
+          ↑
+        </button>
+        <button class="bloodborne-btn" (click)="decreaseStat('vitality')">
+          ↓
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td class="stat-name">
+        <img
+          src="assets/images/endurance.png"
+          alt="Endurance"
+          class="stat-icon"
+        />
+        <span>Endurance</span>
+      </td>
+      <td>
+        <input
+          type="number"
+          min="1"
+          max="99"
+          [value]="stats.endurance"
+          class="stat-input"
+          (input)="validateStat('endurance', $event)"
+        />
+      </td>
+      <td class="stat-controls">
+        <button class="bloodborne-btn" (click)="increaseStat('endurance')">
+          ↑
+        </button>
+        <button class="bloodborne-btn" (click)="decreaseStat('endurance')">
+          ↓
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td class="stat-name">
+        <img
+          src="assets/images/strength.png"
+          alt="Strength"
+          class="stat-icon"
+        />
+        <span>Strength</span>
+      </td>
+      <td>
+        <input
+          type="number"
+          min="1"
+          max="99"
+          [value]="stats.strength"
+          class="stat-input"
+          (input)="validateStat('strength', $event)"
+        />
+      </td>
+      <td class="stat-controls">
+        <button class="bloodborne-btn" (click)="increaseStat('strength')">
+          ↑
+        </button>
+        <button class="bloodborne-btn" (click)="decreaseStat('strength')">
+          ↓
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td class="stat-name">
+        <img src="assets/images/skill.png" alt="Skill" class="stat-icon" />
+        <span>Skill</span>
+      </td>
+      <td>
+        <input
+          type="number"
+          min="1"
+          max="99"
+          [value]="stats.skill"
+          class="stat-input"
+          (input)="validateStat('skill', $event)"
+        />
+      </td>
+      <td class="stat-controls">
+        <button class="bloodborne-btn" (click)="increaseStat('skill')">
+          ↑
+        </button>
+        <button class="bloodborne-btn" (click)="decreaseStat('skill')">
+          ↓
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td class="stat-name">
+        <img
+          src="assets/images/bloodtinge.png"
+          alt="Bloodtinge"
+          class="stat-icon"
+        />
+        <span>Bloodtinge</span>
+      </td>
+      <td>
+        <input
+          type="number"
+          min="1"
+          max="99"
+          [value]="stats.bloodtinge"
+          class="stat-input"
+          (input)="validateStat('bloodtinge', $event)"
+        />
+      </td>
+      <td class="stat-controls">
+        <button class="bloodborne-btn" (click)="increaseStat('bloodtinge')">
+          ↑
+        </button>
+        <button class="bloodborne-btn" (click)="decreaseStat('bloodtinge')">
+          ↓
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td class="stat-name">
+        <img src="assets/images/arcane.png" alt="Arcane" class="stat-icon" />
+        <span>Arcane</span>
+      </td>
+      <td>
+        <input
+          type="number"
+          min="1"
+          max="99"
+          [value]="stats.arcane"
+          class="stat-input"
+          (input)="validateStat('arcane', $event)"
+        />
+      </td>
+      <td class="stat-controls">
+        <button class="bloodborne-btn" (click)="increaseStat('arcane')">
+          ↑
+        </button>
+        <button class="bloodborne-btn" (click)="decreaseStat('arcane')">
+          ↓
+        </button>
+      </td>
+    </tr>
+  </table>
+
+  <div class="bloodborne-separator"></div>
+
+  <div class="results-section" *ngIf="origins.length > 0">
+    <table class="bloodborne-results">
+      <thead>
+        <tr>
+          <th>Origin</th>
+          <th>Level</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let origin of origins">
+          <td>{{ origin.name }}</td>
+          <td>{{ origin.level }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="error" class="error-message">
+    {{ error }}
+  </div>
+</div>
