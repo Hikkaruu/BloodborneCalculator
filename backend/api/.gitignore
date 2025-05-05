@@ -55,4 +55,4 @@ _ReSharper.*
 
 local.settings.json
 .env
-Properties/
+api\Properties\*
