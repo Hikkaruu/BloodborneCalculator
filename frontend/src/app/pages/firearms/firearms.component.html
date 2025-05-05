@@ -1,0 +1,158 @@
+<h1 class="bloodborne-title">Firearms</h1>
+<div class="bloodborne-separator"></div>
+<div class="bloodborne-content">
+  <div class="header-container">
+    <div class="firearm-selector" (click)="loadFirearms()">
+      @if (selectedFirearm) {
+      <img
+        src="assets/images/firearms/{{ selectedFirearm.name }}.png"
+        [alt]="selectedFirearm.name"
+        class="firearm-image"
+      />
+      <span class="firearm-text">{{ selectedFirearm.name }}</span>
+      } @else {
+      <span>Select Firearm</span>
+      }
+    </div>
+    <app-boss-popup></app-boss-popup>
+  </div>
+
+  <app-stats-for-weapons></app-stats-for-weapons>
+
+  @if (selectedFirearm) {
+  <div class="selected-firearm">
+    <div class="firearm-header">
+      @if (selectedFirearm.imprints != 0) {
+      <img
+        src="assets/images/imprints/imprint{{ selectedFirearm.imprints }}.png"
+        [alt]="selectedFirearm.imprints"
+        class="imprint-image"
+      />
+      }
+      <h3 class="selected-firearm-name">
+        {{ selectedFirearm.name }} + {{ stats.upgradeLevel }}
+      </h3>
+    </div>
+    <div class="firearm-details">
+      <img
+        src="assets/images/firearms/{{ selectedFirearm.name }}.png"
+        [alt]="selectedFirearm.name"
+        class="firearm-detail-image"
+      />
+      <div class="firearm-stats">
+        <div><strong>Attack Rating:</strong> {{ attackRating }}</div>
+        <div>
+          <strong>Damage: </strong>
+          {{ damage }}
+        </div>
+        <div><strong>Bullet Use:</strong> {{ selectedFirearm.bulletUse }}</div>
+        <div>
+          <strong>Requirements:</strong>
+          <span
+            [class.requirement-met]="
+              meetsRequirement(
+                selectedFirearm.strengthRequirement,
+                stats.strength
+              )
+            "
+            [class.requirement-not-met]="
+              !meetsRequirement(
+                selectedFirearm.strengthRequirement,
+                stats.strength
+              )
+            "
+          >
+            STR {{ selectedFirearm.strengthRequirement }}
+          </span>
+          <span
+            [class.requirement-met]="
+              meetsRequirement(selectedFirearm.skillRequirement, stats.skill)
+            "
+            [class.requirement-not-met]="
+              !meetsRequirement(selectedFirearm.skillRequirement, stats.skill)
+            "
+          >
+            SKL {{ selectedFirearm.skillRequirement }}
+          </span>
+          <span
+            [class.requirement-met]="
+              meetsRequirement(
+                selectedFirearm.bloodtingeRequirement,
+                stats.bloodtinge
+              )
+            "
+            [class.requirement-not-met]="
+              !meetsRequirement(
+                selectedFirearm.bloodtingeRequirement,
+                stats.bloodtinge
+              )
+            "
+          >
+            BLT {{ selectedFirearm.bloodtingeRequirement }}
+          </span>
+          <span
+            [class.requirement-met]="
+              meetsRequirement(selectedFirearm.arcaneRequirement, stats.arcane)
+            "
+            [class.requirement-not-met]="
+              !meetsRequirement(selectedFirearm.arcaneRequirement, stats.arcane)
+            "
+          >
+            ARC {{ selectedFirearm.arcaneRequirement }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  } @if (showFirearmPopup) {
+  <div class="firearm-popup-overlay" (click)="showFirearmPopup = false">
+    <div class="firearm-popup" (click)="$event.stopPropagation()">
+      <h3>Select Firearm</h3>
+      <div class="firearm-list">
+        @for (firearm of firearms; track firearm.id) {
+        <div class="firearm-item" (click)="selectFirearm(firearm)">
+          <img
+            src="assets/images/firearms/{{ firearm.name }}.png"
+            alt="{{ firearm.name }}"
+            [alt]="firearm.name"
+            class="firearm-list-image"
+          />
+          <div class="firearm-info">
+            <h4>{{ firearm.name }}</h4>
+            <div class="damage-types">
+              <span *ngIf="firearm.bloodAttack > 0"
+                >Blood: {{ firearm.bloodAttack }}</span
+              >
+              <span *ngIf="firearm.physicalAttack > 0"
+                >Physical: {{ firearm.physicalAttack }}</span
+              >
+              <span *ngIf="firearm.arcaneAttack > 0"
+                >Arcane: {{ firearm.arcaneAttack }}</span
+              >
+              <span *ngIf="firearm.fireAttack > 0"
+                >Fire: {{ firearm.fireAttack }}</span
+              >
+              <span *ngIf="firearm.boltAttack > 0"
+                >Bolt: {{ firearm.boltAttack }}</span
+              >
+            </div>
+            <div class="requirements">
+              <span>STR {{ firearm.strengthRequirement }}</span>
+              <span> | SKL {{ firearm.skillRequirement }}</span>
+              <span> | BLD {{ firearm.bloodtingeRequirement }}</span>
+              <span> | ARC {{ firearm.arcaneRequirement }}</span>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+      <button
+        class="bloodborne-btn close-btn"
+        (click)="showFirearmPopup = false"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+  }
+</div>
