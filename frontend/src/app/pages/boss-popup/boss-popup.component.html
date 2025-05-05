@@ -1,0 +1,47 @@
+<div class="bloodborne-content">
+  <div class="boss-selector" (click)="loadBosses()">
+    @if (selectedBoss) {
+    <img
+      [src]="'assets/images/bosses/' + selectedBoss.name + '.jpg'"
+      [alt]="selectedBoss.name"
+      class="boss-image"
+    />
+    <span class="boss-text">{{ selectedBoss.name }}</span>
+    } @else {
+    <span>Select Boss</span>
+    }
+  </div>
+
+  @if (showBossPopup) {
+  <div class="boss-popup-overlay" (click)="showBossPopup = false">
+    <div class="boss-popup" (click)="$event.stopPropagation()">
+      <h3>Select Boss</h3>
+      <div class="boss-list">
+        @for (boss of bosses; track boss.id) {
+        <div class="boss-item" (click)="selectBoss(boss)">
+          <img
+            [src]="'assets/images/bosses/' + boss.name + '.jpg'"
+            [alt]="boss.name"
+            class="boss-list-image"
+          />
+          <div class="boss-info">
+            <h4>{{ boss.name }}</h4>
+            <div class="boss-health">
+              <span
+                >Health: <strong>{{ boss.health }}</strong></span
+              ><br />
+              <span
+                >Blood Echoes: <strong>{{ boss.bloodEchoes }}</strong></span
+              >
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+      <button class="bloodborne-btn close-btn" (click)="showBossPopup = false">
+        Close
+      </button>
+    </div>
+  </div>
+  }
+</div>
