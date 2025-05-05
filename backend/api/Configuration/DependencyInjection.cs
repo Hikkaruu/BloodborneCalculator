@@ -45,7 +45,8 @@ namespace api.Configuration
                 {
                     Title = "Bloodborne API",
                     Version = "1.0.0",
-                    Description = "Bloodborne API for calculator purposes"
+                    Description = "Bloodborne API for calculator purposes\n\n" +
+                    "Made by Hikkaru: [Github](https://github.com/Hikkaruu)"
                 });
 
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
