@@ -45,7 +45,8 @@ namespace api.Configuration
                 {
                     Title = "Bloodborne API",
                     Version = "1.0.0",
-                    Description = "Bloodborne API for calculator purposes"
+                    Description = "Bloodborne API for calculator purposes\n\n" +
+                    "Made by Hikkaru: [Github](https://github.com/Hikkaruu)"
                 });
 
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -67,13 +68,16 @@ namespace api.Configuration
 
         public static IServiceCollection AddCorsOptions(this IServiceCollection services)
         {
+            var productionCorsHost = Environment.GetEnvironmentVariable("PRODUCTION_CORS_HOST")!;
 
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowAngular",
                     policy =>
                     {
-                        policy.WithOrigins("http://localhost:4200")
+                        policy.WithOrigins(
+                                "http://localhost:4200",
+                                productionCorsHost)
                               .AllowAnyHeader()
                               .AllowAnyMethod();
                     });
