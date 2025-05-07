@@ -1,6 +1,6 @@
 # 🩸 Bloodborne Calculator
 
-[![pl](https://img.shields.io/badge/lang-english-red.svg)](https://github.com/Hikkaruu/BloodborneCalculator/blob/main/README_PL.md)
+[![pl](https://img.shields.io/badge/lang-english-red.svg)](https://github.com/Hikkaruu/BloodborneCalculator/blob/main/README.md)
 
 Aplikacja webowa pozwalająca na:
 - Wybieraniu optymalnej klasy w zależności od buildu
